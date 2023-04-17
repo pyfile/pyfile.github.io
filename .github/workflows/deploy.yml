@@ -2,9 +2,7 @@ name: github pages
 
 on:
   push:
-    branches:
-      - main  # Set a branch to deploy
-  pull_request:
+    
 
 jobs:
   deploy:
@@ -14,6 +12,13 @@ jobs:
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Git Configuration
+        run: 
+          git config --global core.quotePath false
+          git config --global core.autocrlf false
+          git config --global core.safecrlf true
+          git config --global core.ignorecase false
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -30,3 +35,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          PUBLISH_BRANCH: main

@@ -6,7 +6,31 @@
         <description>Recent content in Tags on MD means More is Different</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://pyfile.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pyfile.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Reinforcement Learning</title>
+        <link>https://pyfile.github.io/tags/reinforcement-learning/</link>
+        <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://pyfile.github.io/tags/reinforcement-learning/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>RNN</title>
+        <link>https://pyfile.github.io/tags/rnn/</link>
+        <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://pyfile.github.io/tags/rnn/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Symbolic regression</title>
+        <link>https://pyfile.github.io/tags/symbolic-regression/</link>
+        <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://pyfile.github.io/tags/symbolic-regression/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>css</title>
         <link>https://pyfile.github.io/tags/css/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>

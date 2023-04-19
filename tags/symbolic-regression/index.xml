@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Symbolic regression on MD means More is Different</title>
+        <title>Symbolic regression on KiKi&#39;s Blog</title>
         <link>https://pyfile.github.io/tags/symbolic-regression/</link>
-        <description>Recent content in Symbolic regression on MD means More is Different</description>
+        <description>Recent content in Symbolic regression on KiKi&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pyfile.github.io/tags/symbolic-regression/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,7 +12,12 @@
         <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>https://pyfile.github.io/p/deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws/</guid>
-        <description>&lt;h1 id=&#34;deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws&#34;&gt;Deep symbolic regression for physics guided by units constraints: toward the automated discovery of physical laws&lt;/h1&gt;
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2303.03192&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;原文地址&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/WassimTenachi/PhySO&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;实验源码&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;原文解读&#34;&gt;原文解读&lt;/h2&gt;
+&lt;p&gt;这篇文章主要介绍了作者实现的物理问题的深度符号回归方法，从物理数据中预测可能的解析形式。（P.S. 作者推特上说这个工作做他们做了一年半）&lt;/p&gt;
 </description>
         </item>
         

@@ -2,105 +2,105 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://pyfile.github.io/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/"
+                href="https://pyfile.github.io/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ar"
-                href="http://localhost:1313/ar/"
+                href="https://pyfile.github.io/ar/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/"
+                href="https://pyfile.github.io/"
                 />
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://pyfile.github.io/categories/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/categories/"
+                href="https://pyfile.github.io/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ar"
-                href="http://localhost:1313/ar/categories/"
+                href="https://pyfile.github.io/ar/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/categories/"
+                href="https://pyfile.github.io/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/tags/graph-theory/</loc>
+    <loc>https://pyfile.github.io/tags/graph-theory/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/matrix-tree-theorem/</loc>
+    <loc>https://pyfile.github.io/tags/matrix-tree-theorem/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/nonequilibrium/</loc>
+    <loc>https://pyfile.github.io/tags/nonequilibrium/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/paper-reading/</loc>
+    <loc>https://pyfile.github.io/tags/paper-reading/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/paper-reading/</loc>
+    <loc>https://pyfile.github.io/categories/paper-reading/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://pyfile.github.io/post/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://pyfile.github.io/tags/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/tags/"
+                href="https://pyfile.github.io/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ar"
-                href="http://localhost:1313/ar/tags/"
+                href="https://pyfile.github.io/ar/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/tags/"
+                href="https://pyfile.github.io/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/</loc>
+    <loc>https://pyfile.github.io/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws/</loc>
+    <loc>https://pyfile.github.io/p/deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/reinforcement-learning/</loc>
+    <loc>https://pyfile.github.io/tags/reinforcement-learning/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rnn/</loc>
+    <loc>https://pyfile.github.io/tags/rnn/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/symbolic-regression/</loc>
+    <loc>https://pyfile.github.io/tags/symbolic-regression/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://pyfile.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/page/</loc>
+    <loc>https://pyfile.github.io/page/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/links/</loc>
+    <loc>https://pyfile.github.io/links/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://pyfile.github.io/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/test/</loc>
+    <loc>https://pyfile.github.io/categories/test/</loc>
   </url><url>
-    <loc>http://localhost:1313/%E5%85%B3%E4%BA%8E/</loc>
+    <loc>https://pyfile.github.io/%E5%85%B3%E4%BA%8E/</loc>
   </url>
 </urlset>

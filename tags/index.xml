@@ -2,64 +2,64 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on KiKi&#39;s Blog</title>
-        <link>https://pyfile.github.io/tags/</link>
+        <link>http://localhost:1313/tags/</link>
         <description>Recent content in Tags on KiKi&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 02 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://pyfile.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 02 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Graph Theory</title>
-        <link>https://pyfile.github.io/tags/graph-theory/</link>
+        <link>http://localhost:1313/tags/graph-theory/</link>
         <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/tags/graph-theory/</guid>
+        <guid>http://localhost:1313/tags/graph-theory/</guid>
         <description></description>
         </item>
         <item>
         <title>Matrix Tree Theorem</title>
-        <link>https://pyfile.github.io/tags/matrix-tree-theorem/</link>
+        <link>http://localhost:1313/tags/matrix-tree-theorem/</link>
         <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/tags/matrix-tree-theorem/</guid>
+        <guid>http://localhost:1313/tags/matrix-tree-theorem/</guid>
         <description></description>
         </item>
         <item>
         <title>Nonequilibrium</title>
-        <link>https://pyfile.github.io/tags/nonequilibrium/</link>
+        <link>http://localhost:1313/tags/nonequilibrium/</link>
         <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/tags/nonequilibrium/</guid>
+        <guid>http://localhost:1313/tags/nonequilibrium/</guid>
         <description></description>
         </item>
         <item>
         <title>Paper Reading</title>
-        <link>https://pyfile.github.io/tags/paper-reading/</link>
+        <link>http://localhost:1313/tags/paper-reading/</link>
         <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/tags/paper-reading/</guid>
+        <guid>http://localhost:1313/tags/paper-reading/</guid>
         <description></description>
         </item>
         <item>
         <title>Reinforcement Learning</title>
-        <link>https://pyfile.github.io/tags/reinforcement-learning/</link>
+        <link>http://localhost:1313/tags/reinforcement-learning/</link>
         <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/tags/reinforcement-learning/</guid>
+        <guid>http://localhost:1313/tags/reinforcement-learning/</guid>
         <description></description>
         </item>
         <item>
         <title>RNN</title>
-        <link>https://pyfile.github.io/tags/rnn/</link>
+        <link>http://localhost:1313/tags/rnn/</link>
         <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/tags/rnn/</guid>
+        <guid>http://localhost:1313/tags/rnn/</guid>
         <description></description>
         </item>
         <item>
         <title>Symbolic Regression</title>
-        <link>https://pyfile.github.io/tags/symbolic-regression/</link>
+        <link>http://localhost:1313/tags/symbolic-regression/</link>
         <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/tags/symbolic-regression/</guid>
+        <guid>http://localhost:1313/tags/symbolic-regression/</guid>
         <description></description>
         </item>
         

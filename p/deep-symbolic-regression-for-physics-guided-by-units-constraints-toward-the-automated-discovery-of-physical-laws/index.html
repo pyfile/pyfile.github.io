@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Paper reading'>
 <title>Deep symbolic regression for physics guided by units constraints: toward the automated discovery of physical laws</title>
 
-<link rel='canonical' href='https://pyfile.github.io/p/deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws/'>
+<link rel='canonical' href='http://localhost:1313/p/deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws/'>
 
-<link rel="stylesheet" href="/scss/style.min.06df48e652eca8fd3ba64d55006b996632722d301bb4fab70ca9bc02a2798521.css"><meta property='og:title' content='Deep symbolic regression for physics guided by units constraints: toward the automated discovery of physical laws'>
+<link rel="stylesheet" href="/scss/style.min.6ce623c73bc102419009989a2ed8eabeee24a2b9622e20eecf10a94591f47ffa.css"><meta property='og:title' content='Deep symbolic regression for physics guided by units constraints: toward the automated discovery of physical laws'>
 <meta property='og:description' content='Paper reading'>
-<meta property='og:url' content='https://pyfile.github.io/p/deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws/'>
+<meta property='og:url' content='http://localhost:1313/p/deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws/'>
 <meta property='og:site_name' content='KiKi&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Reinforcement Learning' /><meta property='article:tag' content='RNN' /><meta property='article:tag' content='Symbolic regression' /><meta property='article:published_time' content='2023-04-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-18T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Deep symbolic regression for physics guided by units constraints: toward the automated discovery of physical laws">
 <meta name="twitter:description" content="Paper reading">
     <link rel="shortcut icon" href="R-C.ico" />
+
+  
+
 <style>
     ::selection {
     color: #fff;
@@ -21,13 +24,17 @@
 }
 </style>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-regular/result.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaimonogb-regular/result.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/lxgwwenkaigbscreen/result.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/lxgwwenkaimonogbscreen/result.css" />
 <style>
 	:root {
-	  --sys-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue";
-	  --zh-font-family: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Open Sans", "Noto Sans SC", "Noto Color Emoji", "Microsoft YaHei";
-	  --base-font-family: "Open Sans", "Noto Sans SC", "Noto Color Emoji";
-	  --code-font-family: "Cascadia Code", "Source Sans Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
-	  --article-font-family: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Open Sans", "Noto Sans SC", "Noto Color Emoji", "Microsoft YaHei";
+	  --sys-font-family: "LXGW WenKai GB", -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue";
+	  --zh-font-family: "LXGW WenKai GB", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Open Sans", "Noto Sans SC", "Noto Color Emoji", "Microsoft YaHei";
+	  --base-font-family: "LXGW WenKai GB", "Open Sans", "Noto Sans SC", "Noto Color Emoji";
+	  --code-font-family: "LXGW WenKai Mono GB", "Cascadia Code", "Source Sans Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
+	  --article-font-family: "LXGW WenKai GB", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Open Sans", "Noto Sans SC", "Noto Color Emoji", "Microsoft YaHei";
 	}
 </style>
 
@@ -74,7 +81,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3d551e57b6c2fc4c1ccab9547502100a_19450_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu6433989648654999414.png" width="300"
                             height="287" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -226,11 +233,11 @@
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="https://pyfile.github.io/en/" >English</option>
+                            <option value="http://localhost:1313/en/" >English</option>
                         
-                            <option value="https://pyfile.github.io/" selected>中文</option>
+                            <option value="http://localhost:1313/" selected>中文</option>
                         
-                            <option value="https://pyfile.github.io/ar/" >عربي</option>
+                            <option value="http://localhost:1313/ar/" >عربي</option>
                         
                     </select>
                 </li>
@@ -385,7 +392,7 @@
         
             <a href="/tags/rnn/">RNN</a>
         
-            <a href="/tags/symbolic-regression/">Symbolic regression</a>
+            <a href="/tags/symbolic-regression/">Symbolic Regression</a>
         
     </section>
 
@@ -436,12 +443,34 @@
 
     
 
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Thermodynamic Bounds on Symmetry Breaking in Linear and Catalytic Biochemical Systems</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
      
     
         
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -489,7 +518,7 @@
         
             2020 - 
         
-        2023 KiKi&#39;s Blog
+        2025 KiKi&#39;s Blog
     </section>
     
     <section class="powerby">

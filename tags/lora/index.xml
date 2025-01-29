@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>LoRA on KiKi&#39;s Blog</title>
+        <link>https://pyfile.github.io/tags/lora/</link>
+        <description>Recent content in LoRA on KiKi&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Wed, 29 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://pyfile.github.io/tags/lora/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Mathematical Introduction to Low-Rank structure from LoRA &amp; Galore</title>
+        <link>https://pyfile.github.io/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/</link>
+        <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://pyfile.github.io/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/</guid>
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2106.09685&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LoRA&lt;/a&gt; &amp;amp; &lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2403.03507&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Galore&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;lora&#34;&gt;LoRA
+&lt;/h2&gt;&lt;h3 id=&#34;背景简介&#34;&gt;背景简介
+&lt;/h3&gt;&lt;p&gt;目前NLP领域常用的范式就是选择一个已经预训练好的LLM模型作为基座然后做微调来完成自己的任务，但是全参数的微调在目前参数量过大的LLM模型上过于昂贵了，LoRA就是面向这样一个问题而提出的高效微调方法。&lt;/p&gt;
+&lt;p&gt;简单说来，LoRA基于这样一个事实&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;the learned over-parametrized models in fact reside on a low intrinsic dimension&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/1804.08838&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Measuring the Intrinsic Dimension of Objective Landscapes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2012.13255&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;作者据此假设权重更新的时候亦存在一个低的&amp;quot;intrinsic dimension&amp;quot;，这才有了LoRA(Low-Rank Adaptation approach)。在实际操作中，LoRA就是在微调过程中只训练一些全连接层，而这些全连接层的参数还是经过两个低秩矩阵分解后的，只需要更新低秩矩阵参数即可，如下图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-7.1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;figure1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;理论方法&#34;&gt;理论方法
+&lt;/h3&gt;&lt;p&gt;原来的模型Dense层的参数
+$$
+W\in \mathbb{R}^{d\times k}
+$$&lt;/p&gt;
+&lt;p&gt;微调更新&lt;/p&gt;
+&lt;p&gt;$$
+W_0+\Delta W=W_0+BA\text{, }B\in\mathbb{R}^{d\times r}\&amp;amp;A\in\mathbb{R}^{r\times k}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;应用实际的注意点&#34;&gt;应用实际的注意点
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;We leave the empirical investigation of adapting the MLP layers, LayerNorm layers, and biases to a future work.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;LoRA本文工作作者只将这个方法应用到了Attension的权重部分，即$W_q,W_k,W_v,W_o$上，而不管其他的MLP等层。并且尽管Attension可能是有多头的，但是这个工作里将每种权重$W_q$等分别视作一整个矩阵。&lt;/p&gt;
+&lt;h2 id=&#34;galore&#34;&gt;GaLore
+&lt;/h2&gt;&lt;h3 id=&#34;背景简介-1&#34;&gt;背景简介
+&lt;/h3&gt;&lt;p&gt;这个方法是LoRA的延续/改进，同样是为了实现LLM的高效微调，LoRA有效果和全参数微调相比不够好的问题。同时，整体上GaLore的思路是继承了low rank structure的思想的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-7.2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;figure2&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;理论方法-1&#34;&gt;理论方法
+&lt;/h3&gt;&lt;p&gt;LoRA是认为over parametered LLM的参数矩阵是可以使用low rank矩阵来分解的，而Galore在LoRA的基础上更进了一步，它认为权重更新的梯度矩阵G是缓变的低秩结构。&lt;/p&gt;
+&lt;h4 id=&#34;可逆网络的梯度形式&#34;&gt;可逆网络的梯度形式
+&lt;/h4&gt;&lt;p&gt;定义：可逆网络$\mathcal{N}(x):=\mathcal{N}_L(\mathcal{N}_{L-1}(&amp;hellip;\mathcal{N}_1(x)))$，$J_l:= \text{Jacobian} (\mathcal{N}_L)&amp;hellip; \text{Jacobian} (\mathcal{N}_{l+1})$，$f_l:=\mathcal{N}_l(&amp;hellip;\mathcal{N}_1(x))$，第l层的权重矩阵为$W_l$有梯度$G_l$，batchsize为1。简化一点我们可以用下图说明：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-7.3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;figure3&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;通常我们有数值回归任务和分类任务两类任务，他们的Loss function通常为$\frac{1}{2}(y-f_L)^2$和$-log(\frac{exp(z_{y_i})}{\sum^K_{i=1}exp(z_i)})$，更进一步
+当$\varphi=\frac{1}{2}(y-f_L)^2$，那么我们有
+$$
+\begin{align*}
+G_l &amp;amp;= \frac{\partial\varphi}{\partial W_l} \\
+&amp;amp;= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\
+&amp;amp;= -(y-f_L)\cdot J_l \cdot \frac{\partial f_l}{\partial W_l} \\
+&amp;amp;= J^T_l\cdot -(y-f_L)\cdot \frac{\partial f_l}{\partial W_l}
+\end{align*}
+$$
+简单有
+$$
+f_l = W_l \cdot f_{l-1}
+$$
+所以
+$$
+\frac{\partial f_l}{\partial W_l} = f^T_{l-1}
+$$
+而我们可以认为$f_{l,0}=0$，所以
+$$
+\begin{align*}
+f_L &amp;amp;= \frac{\partial f_L}{\partial f_l}\cdot f_l \\
+&amp;amp;= J_l \cdot W_lf_{l-1}
+\end{align*}
+$$
+全部代入最初的结果可得
+$$
+G_l=-J^T_l(y-J_lW_lf_{l-1})f^T_{l-1}
+$$
+这与文中Appendix B.1的公式6形式一致，差一个符号或许可以解释为梯度下降再取一个负号&lt;/p&gt;
+&lt;p&gt;而当$\varphi=-log(\frac{exp(y^Tf_L)}{\mathbf{1}^Texp(f_L)})$时，
+首先我们需要拿来一个投影矩阵$P_{\mathbf{1}}^{\perp}=I-\frac{1}{K}\mathbf{1}^T\mathbf{1}$，我们注意到这个投影矩阵是半正定的同时它本质上是把任意向量投影到$\mathbf{1}$向量的正交补空间，即经过投影后的向量一定与$\mathbf{1}$正交，这意味着投影后的向量一定是均值为0的（这个性质后面能用到）。接着我们利用这个投影矩阵定义新的$\hat{f}:=P_{\mathbf{1}}^{\perp}f$，从$P_{\mathbf{1}}^{\perp}$的形式我们可以知道$f=\hat{f}+c\mathbf{1}$，那么我们可以知道
+$$
+\varphi=-ln(\frac{exp(c)exp(y^T\hat{f})}{exp(c)\mathbf{1}^Texp(\hat{f})})=-(y^T\hat{f}-ln(\mathbf{1}^Texp(\hat{f})))
+$$
+接着对$exp(\hat{f})$进行泰勒展开，保留到二阶
+$$
+\begin{align*}
+exp(\hat{f}) &amp;amp;= \mathbf{1}^T(1+\hat{f}+\frac{1}{2}\hat{f}^T\hat{f}) \\
+&amp;amp;= (K + 0 + \frac{1}{2}\hat{f}^T\hat{f}) \\
+&amp;amp;= K(1+\frac{1}{2K}\hat{f}^T\hat{f})
+\end{align*}
+$$
+带入可得
+$$
+\varphi = -(y^T\hat{f}-ln(1+\frac{1}{2K}\hat{f}^T\hat{f})-lnK)
+$$
+那么
+$$
+\begin{align*}
+G_l &amp;amp;= \frac{\partial\varphi}{\partial W_l} \\
+&amp;amp;= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\
+&amp;amp;= J^T_l\frac{\partial\hat{f}_l}{\partial f_l}\frac{\partial\varphi}{\partial\hat{f}_l}\hat{f}^T_{l-1} \\
+&amp;amp;= -J^T_lP^T_{\mathbf{1}}(y^T-\frac{\gamma}{K}\hat{f}_L)\hat{f}^T_{l-1} \\
+&amp;amp;= -J^T_lP^T_{\mathbf{1}}(y^T-\frac{\gamma}{K}J_lW_lf_{l-1})\hat{f}^T_{l-1}
+\end{align*}
+$$
+其中$\gamma=(1+\frac{1}{2K}\hat{f}^T\hat{f})^{-1}$，并且在small logits下$||P^T_\mathbf{1}f_L||_{\infty}\ll\sqrt{K}$，那么$\gamma\thickapprox1$。
+同样， 这与文中Lemma B.2形式一致，相差一个负号应该是梯度下降取负号&lt;/p&gt;
+&lt;h4 id=&#34;low-rank-gradient&#34;&gt;Low Rank Gradient
+&lt;/h4&gt;&lt;p&gt;经过上面的证明我们可以知道，可逆网络的梯度有这样的通用形式
+$$
+G_l=A-BW_lC
+$$
+我们假设采用SGD的更新形式$W_l^t=W^{t-1}_l+\eta G^{t-1}_l$代入，
+$$
+G^t_l=A-B(W^{t-1}_l+\eta G^{t-1}_l)C=G^{t-1}_l-\eta BG^{t-1}_lC
+$$
+接着需要进行如下定义：$S:=C\otimes B$，$g_t:=vec(G_t)\in R^{mn}$是对$G_t\in R^{m\times n}$的向量化。接着，由$vec(BWC)=(C^T\otimes B)vec(W)$，我们可得
+$$
+g_t = (I-\eta S)g_{t-1}
+$$
+接着我们就开始尝试对$G_l$进行low rank approximation，paper里这部分数学过程里面的原理很多可以参考&lt;a class=&#34;link&#34; href=&#34;https://www.cs.ubc.ca/~nickhar/W12/Lecture15Notes.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;UBC Lecture Note&lt;/a&gt;
+首先我们需要stable rank
+$$
+\text{stable-rank}(G_t):=\frac{||G_t||_F^2}{||G_t||^2_2}
+$$
+其中$||A||^2_F$叫做Frobenius norm，定义为$||A||^2_F:=tr(AA^T)=\sum_{i,j}A^2_{i,j}=\sum_i\sigma_i^2$。而另一个$||A||_2$表示matrix 2-norm（矩阵2范数），也叫谱范数(spectral norm)，而矩阵的2范数就是对矩阵做SVD分解后得到的最大奇异值$\sigma_{max}$。因此A的stable rank满足
+$$
+\frac{||A||^2_F}{||A||^2}=\frac{\sum_i\sigma_i^2}{max_i\sigma_i^2}
+$$
+从这我们可以看出stable rank相比rank，虽不能表示所有的正奇异值个数，但可近似掉较小的奇异值。
+$$
+\begin{align*}
+||G_t||^2_F &amp;amp;= ||g_t||^2_F=||(I-\eta S)^tg_0||^2_F=||(I-\eta S)^tg_0^{\parallel}||^2_F+||(I-\eta S)^tg_0^{\perp}||^2_F \\
+&amp;amp;\leq (1-\eta\lambda_2)^{2t}||g_0^{\perp}||^2_F+(1-\eta\lambda_1)^{2t}||g_0^{\parallel}||^2_F
+\end{align*}
+$$
+其中$\lambda_1&amp;lt;\lambda_2$是S最小的两个特征向量，$\lambda_1$是最小的特征值，简并度为$\kappa_1$。$g_0^{\parallel}$是$lambda_1$对应的本征子空间$\nu_1$，我们将$g_0$分解为$g_0=g_0^{\parallel}+g_0^{\perp}$。&lt;/p&gt;
+&lt;p&gt;而从另一个角度出发，根据我们对gradient的低秩假设，设$G_0^{\parallel}$有rank $L$，对其做SVD：
+$$
+G_0^{\parallel}=\sum_{l=1}^Lc_l z_l y^T_l
+$$
+$c_l$为奇异值，$z_l,y_l$为正交单位向量，那么
+$$
+g^{\parallel}_0=vec(G_0^{\parallel})=\sum_{l=1}^Lc_l(y_l\otimes z_l)=\sum_{l=1}^Lc_lv_l，v_l\in\nu_1
+$$
+这样我们就可以注意到这个本征子空间是完全正交对角化的，进而我们就以此注意到$||g_0^{\parallel}||^2_2=||g_0^{\parallel}||^2_F=||G_0^{\parallel}||^2_F$。&lt;/p&gt;
+&lt;p&gt;这样的话，整合上述知识，首先从matrix 2-norm的定义和前述的$g_t=vec(G_t)$的表达式出发
+$$
+\begin{align*}
+||G_t||_2 &amp;amp;= max\text{ }z^TG_ty \\
+&amp;amp;= max (y\otimes z)^Tg_t \\
+&amp;amp;= max (y\otimes z)^T(I-\eta S)^tg_0 \\
+&amp;amp;\geq (1-\eta \lambda_1)^tmax_l v_l^Tg_0
+\end{align*}
+$$
+由于$v_l$对应于最小本征值$\lambda_1$的本征子空间$\nu_1$的单位向量，那么$v_l^Tg_0$可以看作$G_0$向$\nu_1$的投影相关，那么再由matrix 2-norm的定义可以发现，$max(v_l^Tg_0)=||G^{\parallel}_0||_2$。
+最终，我们对$sr(G_t)$的分式中的分子取上界，分母取下界就可以得到最后
+$$
+sr(G_t)\leq sr(G_0^{\parallel})+(\frac{1-\eta \lambda_2}{1-\eta \lambda_1})^{2t}\frac{||G_0^{\perp}||^2_F}{||G^{\parallel}_0||_2}
+$$&lt;/p&gt;
+&lt;p&gt;这样我们就得到了$\text{stable-rank}(G_t)$的上界形式，更进一步的让我们回到梯度$G_t$本身
+$$
+G^l_t = A-BW^lC = (a - BW^lf_l)f_l^T
+$$
+如果$B$是满秩的，而$\text{rank}(f)=N&amp;rsquo;&amp;lt;n$，&lt;/p&gt;
+&lt;p&gt;那么一方面，我们知道$C=ff^T\in \mathbb{R}^{n\times n}$，由于$\text{rank}({f}^N)&amp;lt;n$，那么我们令${u}^{n-N}$作为$\mathbb{R}^n$中$f^N$所张成的空间的补空间的正交基底，同时令${e}^m$作为$\mathbb{R}^m$的任意正交基底，那么显然${u\otimes e}$即可以作为最小本征值0的最小本征空间$\nu_1$的基底，那么我们把$G_{t_0}$投影到$\nu_1$上即是
+$$
+G_{t_0}^{\parallel}=\sum_{j=1}^{n-N}\sum_{k=1}^{m}c_{jk}u_je_k^T=\sum_{j=1}^{n-N}u_j\sum_{k=1}^{m}(c_{jk}e_k)^T
+$$
+我们知道$\text{stable-rank}(G^{\parallel}_{t_0})\leq\text{rank}(G^{\parallel}_{t_0})$（可参考&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2407.21594&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stable Rank and Intrinsic Dimension of Real and Complex Matrices&lt;/a&gt;中2.1）,而根据前式情况我们可知$\text{rank}(G^{\parallel}_{t_0})\leq(n-N)$。&lt;/p&gt;
+&lt;p&gt;同时另一方面，$f^N$可以被分解为N个rank为1的矩阵之和，即$f=\sum_{j=1}^Nb_jf_j$，那么
+$$
+G_t=(a-BWf)f^T=(a-BWf)(\sum_{j=1}^Nb_jf_j)^T=\sum_{j=1}^Nb_j(a-BWf)f_j^T
+$$
+那么显然我们可知$\text{rank}(G)\leq N$。&lt;/p&gt;
+&lt;p&gt;所以综上因为$N&amp;lt;n$，我们可知$\text{sr}(G_t)\leq min(n-N,N)\leq n/2$&lt;/p&gt;
+&lt;p&gt;终于，大功告成，我们由此可知作为梯度$G_t$的rank的近似stable-rank是不高于n/2的，有着显著的low rank特性。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Paper reading'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Paper Reading">
 <title>Thermodynamic Bounds on Symmetry Breaking in Linear and Catalytic Biochemical Systems</title>
 
 <link rel='canonical' href='https://pyfile.github.io/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/'>
 
-<link rel="stylesheet" href="/scss/style.min.6ce623c73bc102419009989a2ed8eabeee24a2b9622e20eecf10a94591f47ffa.css"><meta property='og:title' content='Thermodynamic Bounds on Symmetry Breaking in Linear and Catalytic Biochemical Systems'>
-<meta property='og:description' content='Paper reading'>
+<link rel="stylesheet" href="/scss/style.min.5cfab5ff0c93e124204c512cc95a3bdf8d950608f28d21af4ca499e625a311a0.css"><meta property='og:title' content="Thermodynamic Bounds on Symmetry Breaking in Linear and Catalytic Biochemical Systems">
+<meta property='og:description' content="Paper Reading">
 <meta property='og:url' content='https://pyfile.github.io/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/'>
 <meta property='og:site_name' content='KiKi&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Nonequilibrium' /><meta property='article:tag' content='Graph Theory' /><meta property='article:tag' content='Matrix tree Theorem' /><meta property='article:tag' content='Paper Reading' /><meta property='article:published_time' content='2024-07-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-02T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Thermodynamic Bounds on Symmetry Breaking in Linear and Catalytic Biochemical Systems">
-<meta name="twitter:description" content="Paper reading">
-    <link rel="shortcut icon" href="R-C.ico" />
-
-  
-
+<meta name="twitter:description" content="Paper Reading">
+    <link rel="shortcut icon" href="/R-C.ico" />
 <style>
     ::selection {
     color: #fff;
@@ -37,6 +34,8 @@
 	  --article-font-family: "LXGW WenKai GB", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Open Sans", "Noto Sans SC", "Noto Color Emoji", "Microsoft YaHei";
 	}
 </style>
+
+<head></head>
 
     </head>
     <body class="
@@ -81,7 +80,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu6433989648654999414.png" width="300"
+                        <img src="/img/avatar_hu_e0bc96fe347799d2.png" width="300"
                             height="287" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -95,7 +94,7 @@
             <h1 class="site-name"><a href="/">KiKi&#39;s Blog</a></h1>
             <h2 class="site-description">MD means More is Different</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -217,10 +216,11 @@
             </a>
         </li>
         
-
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M4 5h7" />
   <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
@@ -231,21 +231,22 @@
 
 
 
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://pyfile.github.io/en/" >English</option>
-                        
-                            <option value="https://pyfile.github.io/" selected>中文</option>
-                        
-                            <option value="https://pyfile.github.io/ar/" >عربي</option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://pyfile.github.io/en/" >English</option>
+                                
+                                    <option value="https://pyfile.github.io/" selected>中文</option>
+                                
+                                    <option value="https://pyfile.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -253,7 +254,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -261,10 +262,11 @@
 
 
 
-                    <span>暗色模式</span>
-                </li>
-            
-        </div>
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -337,7 +339,7 @@
     
         
         <h3 class="article-subtitle">
-            Paper reading
+            Paper Reading
         </h3>
         
     </div>
@@ -390,11 +392,11 @@
     
     <p><a class="link" href="https://link.aps.org/doi/10.1103/PhysRevLett.132.228402"  target="_blank" rel="noopener"
     >原文地址</a></p>
-<h2 id="1-论文简介">1. 论文简介</h2>
-<p>在生命系统中存在在外力作用下偏离平衡态的系统，在非平衡稳态下表现出某种选择现象，这打破了平衡态下的对称性。作者通过矩阵树理论(matrix-tree theorem)推导出了这样的对称性破缺所对应的热力学上下限，并且证明了这个限制只受热力学和非平衡驱动力决定，与具体动力学过程无关。并且通过这套理论作者计算了动力学校准(kinetic proofreading)中的热力学限制。</p>
-<h2 id="2-理论基础">2. 理论基础</h2>
-<h3 id="21-非平衡稳态">2.1 非平衡稳态</h3>
-<p>从可逆的化学反应过程考虑
+<h2 id="1-论文简介">1. 论文简介
+</h2><p>在生命系统中存在在外力作用下偏离平衡态的系统，在非平衡稳态下表现出某种选择现象，这打破了平衡态下的对称性。作者通过矩阵树理论(matrix-tree theorem)推导出了这样的对称性破缺所对应的热力学上下限，并且证明了这个限制只受热力学和非平衡驱动力决定，与具体动力学过程无关。并且通过这套理论作者计算了动力学校准(kinetic proofreading)中的热力学限制。</p>
+<h2 id="2-理论基础">2. 理论基础
+</h2><h3 id="21-非平衡稳态">2.1 非平衡稳态
+</h3><p>从可逆的化学反应过程考虑
 $$\sum_m\nu_mX_m+X_i\overset{k_{ji}}{\underset{k_{ij}}{\rightleftharpoons}}X_j+\sum_m\nu_mX_m$$
 $\sum_m\nu_mX_m$为反应过程中催化剂机制
 根据化学反应中的<em>Law of mass action</em>，这个过程可以简化成
@@ -404,8 +406,8 @@ $$X_i\overset{k_{ji}\prod_m[X_i]^{\nu_m}}{\underset{k_{ij}\prod_m[X_i]^{\nu_m}}{
 <p>同时每两组相邻的物质转换满足局域细致平衡
 $$\frac{\hat{k}_{ij}}{\hat{k}_{ji}}=\frac{k_{ij}}{k_{ji}}=e^{\beta(F_{ij}-\Delta E_{ij})}$$
 $F_{ij}$代表从$i$到$j$的非平衡热力学力，在这里，由于催化反应造成的非线性可以用一个系数$\omega$概括，这样写成$\hat{k}_{ij}=\omega_{ij}(p)k_{ij}$和$\hat{k}_{ji}=\omega_{ji}(p)k_{ji}$，为了保证细致平衡，$\omega_{ji}(p)=\omega_{ij}(p)$</p>
-<h3 id="22-生成树">2.2. 生成树</h3>
-<p>鉴于我们所使用的环境背景，这里只讨论无向图。在无向图中，若任意两个顶点之间都能够连通，则称此无向图为连通图。生成树为无向连通图中极小的连通子图，生成树包含连通图中所有的顶点并且任意两个之间有且仅有一条通路。生成树的边数为顶点数-1，可以简单的说生成树是无环的连通子图。下图就是一个例子：a为原连通图，b是其对应的生成树。
+<h3 id="22-生成树">2.2. 生成树
+</h3><p>鉴于我们所使用的环境背景，这里只讨论无向图。在无向图中，若任意两个顶点之间都能够连通，则称此无向图为连通图。生成树为无向连通图中极小的连通子图，生成树包含连通图中所有的顶点并且任意两个之间有且仅有一条通路。生成树的边数为顶点数-1，可以简单的说生成树是无环的连通子图。下图就是一个例子：a为原连通图，b是其对应的生成树。
 <img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.1.png"
 	
 	
@@ -416,8 +418,8 @@ $F_{ij}$代表从$i$到$j$的非平衡热力学力，在这里，由于催化反
 	
 	
 ></p>
-<h3 id="23-矩阵树理论">2.3. 矩阵树理论</h3>
-<p>让我感到奇怪的是，搜索资料的时候发现图论中的矩阵树理论指的是生成树的数量与拉普拉斯阵的关系<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<h3 id="23-矩阵树理论">2.3. 矩阵树理论
+</h3><p>让我感到奇怪的是，搜索资料的时候发现图论中的矩阵树理论指的是生成树的数量与拉普拉斯阵的关系<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <blockquote>
 <p><em>(the Matrix-Tree Theorem) Let G be a finite connected graph without loops, with laplacian matrix $L = L(G)$. Let $L_0$ denote $L$ with the last row and column removed (or with the ith row and column removed for any i). Then</em>
 $$det(L_0) = \kappa(G)$$</p>
@@ -450,9 +452,9 @@ $$p_k^{ss}=\frac{\sum_{\mu}A_k(T_\mu;p^{ss})}{\sum_k\sum_\mu A_k(T_\mu;p^{ss})}$
 $$
 \frac{A_1(T_3)}{A_4(T_3)}=\frac{\hat{k}_{13}\hat{k}_{34}\hat{k}_{32}}{\hat{k}_{31}\hat{k}_{43}\hat{k}_{32}}=\frac{k_{13}k_{34}k_{32}\omega_{13}\omega_{34}\omega_{32}}{k_{31}k_{43}k_{32}\omega_{31}\omega_{43}\omega_{32}}=\frac{k_{13}k_{34}}{k_{31}k_{43}}=K^{eq}_{14}(T_3)
 $$</p>
-<h2 id="3-结果结论">3. 结果结论</h2>
-<h3 id="31-非平衡对称破缺的上下限">3.1 非平衡对称破缺的上下限</h3>
-<p>lemma1
+<h2 id="3-结果结论">3. 结果结论
+</h2><h3 id="31-非平衡对称破缺的上下限">3.1 非平衡对称破缺的上下限
+</h3><p>lemma1
 $$
 \begin{matrix}
 \frac{\sum_i a_i}{\sum_i b_i}\in\left[min\left(\frac{a_i}{b_i}\right), max\left(\frac{a_i}{b_i}\right)\right] &amp; a_i,b_i &gt; 0
@@ -482,8 +484,8 @@ $$
 \frac{p^{ss}_i}{p^{ss}_j}\leq max(\frac{A_i(T_\mu ;p^{ss})}{A_j(T_\mu ;p^{ss})})=\frac{A_i(T_{max} ;p^{ss})}{A_j(T_{max} ;p^{ss})}=\prod\frac{k_{mn}}{k_{nm}}=\prod e^{\beta(F_{mn}-\Delta E_{mn})}=K^{eq}_{ij}(T_{max})
 $$
 对$p^{ss}_i/p^{ss}_j$的下界同理。至此，我们便看到两个稳态概率比值的上下限与非线性项和非平衡动力学无关。</p>
-<h3 id="32-动力学校准kinetic-proofreading">3.2 动力学校准(kinetic proofreading)</h3>
-<p>动力学校准指的是在一些生命过程中，准确性会受到热平衡的限制，因此有人认为会存在利于动力学分辨的耗能的中间步骤。这里作者借助了一个酶(E)与正确的底物(EW)或错误的底物(ER)结合的模型，这个模型中，每种结合态都有对应加*的激活态，如下图：
+<h3 id="32-动力学校准kinetic-proofreading">3.2 动力学校准(kinetic proofreading)
+</h3><p>动力学校准指的是在一些生命过程中，准确性会受到热平衡的限制，因此有人认为会存在利于动力学分辨的耗能的中间步骤。这里作者借助了一个酶(E)与正确的底物(EW)或错误的底物(ER)结合的模型，这个模型中，每种结合态都有对应加*的激活态，如下图：
 <img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.4.png#pic_center"
 	
 	
@@ -517,8 +519,8 @@ $$
 	
 	
 ></p>
-<h3 id="33-反应扩散方程图案">3.3 反应扩散方程图案</h3>
-<p>作者举的这个例子从原理上与3.2本质上一致，都是因为过程中存在耗能过程导致非平衡，表现在模型上路径中存在额外的耗能路径，利用矩阵树定理计算得到整个过程的新的上下限。
+<h3 id="33-反应扩散方程图案">3.3 反应扩散方程图案
+</h3><p>作者举的这个例子从原理上与3.2本质上一致，都是因为过程中存在耗能过程导致非平衡，表现在模型上路径中存在额外的耗能路径，利用矩阵树定理计算得到整个过程的新的上下限。
 <img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.7.png#pic_center"
 	
 	
@@ -578,18 +580,19 @@ $$
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -599,6 +602,7 @@ $$
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -685,8 +689,8 @@ $$
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
@@ -775,7 +779,7 @@ $$
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

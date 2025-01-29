@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://pyfile.github.io/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -20,8 +20,11 @@
                 href="https://pyfile.github.io/"
                 />
   </url><url>
+    <loc>https://pyfile.github.io/categories/application/</loc>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://pyfile.github.io/categories/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -38,26 +41,26 @@
                 href="https://pyfile.github.io/categories/"
                 />
   </url><url>
-    <loc>https://pyfile.github.io/tags/graph-theory/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+    <loc>https://pyfile.github.io/tags/galore/</loc>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pyfile.github.io/tags/matrix-tree-theorem/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+    <loc>https://pyfile.github.io/tags/lora/</loc>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pyfile.github.io/tags/nonequilibrium/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+    <loc>https://pyfile.github.io/tags/low-rank/</loc>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pyfile.github.io/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/</loc>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pyfile.github.io/tags/paper-reading/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://pyfile.github.io/categories/paper-reading/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pyfile.github.io/post/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pyfile.github.io/tags/</loc>
-    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -73,6 +76,18 @@
                 hreflang="zh-cn"
                 href="https://pyfile.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://pyfile.github.io/tags/graph-theory/</loc>
+    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pyfile.github.io/tags/matrix-tree-theorem/</loc>
+    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pyfile.github.io/tags/nonequilibrium/</loc>
+    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pyfile.github.io/categories/paper-reading/</loc>
+    <lastmod>2024-07-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pyfile.github.io/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/</loc>
     <lastmod>2024-07-02T00:00:00+00:00</lastmod>
@@ -94,6 +109,8 @@
   </url><url>
     <loc>https://pyfile.github.io/page/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pyfile.github.io/p/archives/</loc>
   </url><url>
     <loc>https://pyfile.github.io/links/</loc>
   </url><url>

@@ -16,8 +16,8 @@
     &gt;原文地址&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://github.com/WassimTenachi/PhySO&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;实验源码&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;原文解读&#34;&gt;原文解读&lt;/h2&gt;
-&lt;p&gt;这篇文章主要介绍了作者实现的物理问题的深度符号回归方法，从物理数据中预测可能的解析形式。（P.S. 作者推特上说这个工作做他们做了一年半）&lt;/p&gt;
+&lt;h2 id=&#34;原文解读&#34;&gt;原文解读
+&lt;/h2&gt;&lt;p&gt;这篇文章主要介绍了作者实现的物理问题的深度符号回归方法，从物理数据中预测可能的解析形式。（P.S. 作者推特上说这个工作做他们做了一年半）&lt;/p&gt;
 </description>
         </item>
         

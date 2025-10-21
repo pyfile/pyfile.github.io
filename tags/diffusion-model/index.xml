@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Diffusion Model on KiKi&#39;s Blog</title>
+        <link>http://localhost:1313/tags/diffusion-model/</link>
+        <description>Recent content in Diffusion Model on KiKi&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Tue, 13 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/diffusion-model/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Nonequilbrium physics of generative diffusion models</title>
+        <link>http://localhost:1313/p/nonequilbrium-physics-of-generative-diffusion-models/</link>
+        <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/nonequilbrium-physics-of-generative-diffusion-models/</guid>
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2405.11932&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;原文地址&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-简介&#34;&gt;1. 简介
+&lt;/h2&gt;&lt;p&gt;生成扩散模型将物理学中的朗之万动力学概念应用于机器学习，吸引了工程学、统计学和物理学领域的广泛关注，但对其内在机制的完整描述仍然缺乏。本文对扩散模型进行了清晰的物理分析，运用涨落定理、熵产生、平衡测度和弗朗兹-帕里西势来理解动态过程和内在相变。分析基于正向和反向动力学的路径积分表示，并将反向扩散生成过程视为统计推断，其中时间相关的状态变量充当类似于自旋玻璃理论中的猝灭无序。最终这个研究将随机热力学、统计推断和基于几何的分析联系在一起，从而对生成扩散模型的工作原理给出了一个连贯的描述。&lt;/p&gt;
+&lt;h2 id=&#34;2-背景知识&#34;&gt;2. 背景知识
+&lt;/h2&gt;&lt;h3 id=&#34;21-生成扩散模型以ddpm为例&#34;&gt;2.1 生成扩散模型&amp;ndash;以DDPM为例
+&lt;/h3&gt;&lt;p&gt;这里以DDPM讲解生成扩散模型的基本数学过程。
+逆过程：数据\(\mathbf{x}_0\)，潜空间变量$\mathbf{x}_1...\mathbf{x}_T$，这一系列变量的联合分布$p_{\theta}(\mathbf{x}_{0:T})$被称为逆过程
+首先对于数据与所对应的潜变量的系列运动过程定义为高斯过程的马尔可夫链，那么得到起点$p(\mathbf{x}_T)=\mathcal{N}(\mathbf{x}_T;0,I)$
+&lt;/p&gt;
+$$
+\begin{align}
+&amp;p_\theta(\mathbf{x}_{0:T}):=p(\mathbf{x}_T)\prod^T_{t=1}p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t) \\
+&amp;p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t):=\mathcal{N}(x_{t-1};\mu_\theta(x_t,t),\Sigma_\theta(\mathbf{x}_t,t))
+\end{align}
+$$&lt;p&gt;
+扩散过程：近似后验$q(\mathbf{x}_{1:T}|\mathbf{x}_0)$，被固定在马尔可夫链上并逐渐根据方差表添加高斯噪声得到
+&lt;/p&gt;
+$$
+\begin{align}
+&amp;q(\mathbf{x}_{1:T}|\mathbf{x}_0):=\prod^T_{t=1}q(\mathbf{x}_t|\mathbf{x}_{t-1}) \\
+&amp;q(\mathbf{x}_t|\mathbf{x}_{t-1}):=\mathcal{N}(\mathbf{x}_t;\sqrt{1-\beta_t}\mathbf{x}_{t-1},\beta_t\mathbf{I})
+\end{align}
+$$&lt;h3 id=&#34;22-与langevin方程的关联&#34;&gt;2.2 与Langevin方程的关联
+&lt;/h3&gt;$$
+m\frac{d^2x}{dt^2}=-\gamma\frac{dx}{dt}+F(x)+\xi(t)
+$$&lt;p&gt;
+那么在过阻尼($m\rightarrow0$)与无保守力$F(x)=0$的情形下，方程可以被整理为
+&lt;/p&gt;
+$$
+\frac{dx}{dt}=\frac{1}{\gamma}\xi(t)
+$$&lt;p&gt;
+那么这与生成扩散模型的扩散过程能够对应上。&lt;/p&gt;
+&lt;h3 id=&#34;23-ou-process&#34;&gt;2.3 OU process
+&lt;/h3&gt;&lt;h4 id=&#34;231-wiener-process&#34;&gt;2.3.1 Wiener Process
+&lt;/h4&gt;&lt;p&gt;连续时间随机过程，通常一个Wiener process用符号$W_t$描述，有三个性质：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$W_0=0$&lt;/li&gt;
+&lt;li&gt;$t\rightarrow W_t$在正实数范围内几乎处处连续&lt;/li&gt;
+&lt;li&gt;对所有的$0\leq s &lt; t$，$W_t-W_s\sim\mathcal{N}(0,t-s)$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;232-ornstein-ulhenbeck-process&#34;&gt;2.3.2 Ornstein-Ulhenbeck Process
+&lt;/h4&gt;&lt;p&gt;由wiener process扩展而来的随机过程，由以下随机微分方程描述
+&lt;/p&gt;
+$$
+dx_t=-\theta x_tdt+\sigma dW_t
+$$&lt;p&gt;
+其中参数$\theta &gt; 0,\sigma &gt; 0$，$\mu$表示回归均值。
+同时虽然维纳过程的路径在数学上几乎处处不可微（其在任意点处都无法定义导数），但是在工程和物理上，通常将$\frac{dW_t}{dt}$视为白噪声，记作$\xi_t$。并且由于可微性的问题，其离散化需要一些特殊的处理方式：
+&lt;/p&gt;
+$$
+W(t)=\int^t_{t_0}dt&#39;\xi(t&#39;)=\int^t_{t_0}dW
+$$&lt;p&gt;那么其随机积分表述为$\int^t_{t_0}dt&#39;\xi(t&#39;)f(X_t,t)=\int^t_{t_0}dW f(x_t,t)$，被称作Riemann-Steltjes积分，在这个基础上，这个积分通常有两种约定形式：
+Ito约定，起点方案：
+&lt;/p&gt;
+$$
+\int^t_{t_0}dWf(X_t,t)=\lim_{dt\rightarrow0}\sum^N_{k=0}[W(t_k+dt)-W(t_k)]f(X(t_k),t_k)
+$$&lt;p&gt;
+$t_k=t_0+kdt,N=\frac{t-t_0}{dt}$&lt;/p&gt;
+&lt;p&gt;Stratonovich约定，中点方案：
+&lt;/p&gt;
+$$
+\int^t_{t_0}dWf(X_t,t)=\lim_{dt\rightarrow0}\sum^N_{k=0}[W(t_k+dt)-W(t_k)]f([X(t_k+dt)+X(t_k)]/2,t_k+dt/2)
+$$&lt;h4 id=&#34;233-ou-process的fokker-planck方程&#34;&gt;2.3.3 OU process的Fokker-Planck方程
+&lt;/h4&gt;&lt;p&gt;形式为
+&lt;/p&gt;
+$$
+\frac{\partial P}{\partial t}=\theta \frac{\partial}{\partial x}(xP)+D\frac{\partial^2 P}{\partial x^2}
+$$&lt;p&gt;
+$D=\sigma^2/2$，这个方程的解是
+&lt;/p&gt;
+$$
+P(x,t|x&#39;,t&#39;)=\sqrt{\frac{\theta}{2\pi D(1-e^{-2\theta(t-t&#39;)})}}exp\left[-\frac{\theta}{2D}\frac{(x-x&#39;e^{-\theta(t-t&#39;)})^2}{1-e^{-2\theta(t-t&#39;)}}\right]
+$$&lt;h2 id=&#34;3-详细内容&#34;&gt;3. 详细内容
+&lt;/h2&gt;&lt;h3 id=&#34;31-前向扩散过程中的非平衡物理&#34;&gt;3.1 前向（扩散）过程中的非平衡物理
+&lt;/h3&gt;&lt;h4 id=&#34;311-前向扩散的动力学过程&#34;&gt;3.1.1 前向扩散的动力学过程
+&lt;/h4&gt;&lt;p&gt;首先作者用一个OU过程描述了真实数据变成白噪声的过程：
+&lt;/p&gt;
+$$
+\dot{X}=-X+\sqrt{2}\xi
+$$&lt;p&gt;
+其中$\xi$是一个高斯白噪声，并给定初值$X_0$。
+那么利用一些随机微分方程的知识，我们可以知道它的解的形式为：
+&lt;/p&gt;
+$$
+X_t=e^{-t}X_0+\sqrt{1-e^{-2t}}Z_t
+$$&lt;p&gt;
+其中$Z_t$代表高斯分布的随机变量。
+接着作者为了分析方便，假定初始数据是一个两种高斯分布混合的形式：
+&lt;/p&gt;
+$$
+p(X_0)=\frac{1}{2}\mathcal{N}(\mu,\mathbf{I}_d)+\frac{1}{2}\mathcal{N}(-\mu,\mathbf{I}_d)
+$$&lt;p&gt;那么在这种情况下，利用前述OU过程的方程，我们可以知道：
+&lt;/p&gt;
+$$
+\begin{align}
+p(X_t,t)&amp;=\int dX_0p(X_0)p(X_t|X_0)\\
+&amp;=\int dX_0 p(X_0)\mathcal{N}(X_t;X_0 e^{-t},\mathbf{I}_d)\\
+&amp;=\frac{1}{2}\mathcal{N}(X_t;\mu_t,\mathbf{I}_d)+\frac{1}{2}\mathcal{N}(X_t;-\mu_t,\mathbf{I}_d)
+\end{align}
+$$&lt;p&gt;
+其中$\mu_t=\mu e^{-t}$。
+上述的分析可以清楚地让我们看出，为何DDPM可以那样被设计，为何能期望不断叠加高斯噪声最终能得到一个高斯分布的结果。
+这是本文中作者采用的模型试验的示意图
+&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.5.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示意图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;312-扩散过程的涨落定理&#34;&gt;3.1.2 扩散过程的涨落定理
+&lt;/h4&gt;&lt;p&gt;扩散过程的公式起点：
+&lt;/p&gt;
+$$
+dX_t=f(X_t,t)dt+\sqrt{2}dW
+$$&lt;p&gt;通常的离散化下可得：
+&lt;/p&gt;
+$$
+\frac{X_{t+dt}-X_t}{dt}=f((1-\lambda)X_t+\lambda X_{t+dt}, t+\lambda dt)+\eta_t
+$$&lt;p&gt;
+这里$\eta_t\sim \mathcal{N}(0,2/dt)$
+接着，借助概率密度变换的公式，我们可知：
+&lt;/p&gt;
+$$
+P(X_{t&#39;},t&#39;|X_t,t)=P(\eta_t)\left |\frac{\partial \eta_t}{\partial X_{t&#39;}}\right |
+$$&lt;p&gt;
+由前述离散化公式我们可以顺势计算概率密度变换的雅可比行列式
+&lt;/p&gt;
+$$
+\left |\frac{\partial \eta_t}{\partial X_{t&#39;}}\right |=\left |\frac{\partial (\frac{X_{t+dt}-X_t}{dt}-f((1-\lambda)X_t+\lambda X_{t+dt}, t+\lambda dt))}{\partial X_{t+dt}}\right |\varpropto e^{-\lambda\nabla\cdot fdt}
+$$&lt;p&gt;结果带入前式可得
+&lt;/p&gt;
+$$
+P(X_{t+dt},t+dt|X_t,t)\varpropto e^{-\lambda\nabla\cdot fdt}e^{-\frac{|\dot{X}_t-f(X_t,t)|^2}{4}dt}
+$$&lt;p&gt;那么结合马尔可夫条件，这种情况下以$X_0$为起点的轨迹的条件概率为：
+&lt;/p&gt;
+$$
+\begin{align}
+P(X([T])|X_0)&amp;=\prod_{t&#39;}P(X_{t&#39;},t&#39;|X_t,t)\\
+&amp;=\prod_{t&#39;}e^{-\lambda\nabla\cdot fdt}e^{-\frac{|\dot{X}_t-f(X_t,t)|^2}{4}dt}\\
+&amp;\varpropto e^{\int^T_0[-\lambda\nabla\cdot f-\frac{|\dot{X}_t-f(X_t,t)|^2}{4}]\odot^{\lambda}dt}
+\end{align}
+$$&lt;p&gt;
+这里$\odot^\lambda$表示随机积分的$\lambda-$约定。
+事已至此，对比我们上一节提出的OU过程模型公式与作为推导起点的公式，我们可以简单令此处$f=-X$，同时需注意这里是d维的动力学公式，带入前式可得OU过程的轨迹概率为：
+&lt;/p&gt;
+$$
+\begin{align}
+P(X([T])|X_0)&amp;=\prod_{t&#39;}P(X_{t&#39;},t&#39;|X_t,t)\\
+&amp;\varpropto exp\left (-\int^T_0[\frac{1}{4}(\dot{X}+X)^2-\lambda d]\odot^{\lambda}dt\right )
+\end{align}
+$$&lt;p&gt;
+在这样的形式下，e指数的部分在物理中被称为action for the path probability，而这样被时间积分的作用函数称作Lagrangian $\mathcal{L}$。
+考察对应的逆过程$\tilde{X}(s)=X(t),s=T-t$，接着显然有$\tilde{X}(0)=X(T),\tilde{X}(T)=X(0),\dot{\tilde{X}}(s)=-\dot{X}(t)$，那么将上述带入前面的前向OU过程可得逆过程的概率：
+&lt;/p&gt;
+$$
+\begin{align}
+P[\tilde{X}([T])|\tilde{X}_0]&amp;\varpropto exp\left (-\int^T_0ds\odot^\lambda[(\dot{\tilde{X}}+\tilde{X})^2/4-\lambda d]\right ) \\
+&amp;=exp\left (-\int^T_0dt\odot^{1-\lambda}[(-\dot{X}+X)^2/4-\lambda d]\right )
+\end{align} 
+$$&lt;p&gt;那么我们就有：
+&lt;/p&gt;
+$$
+\begin{align}
+ln\left [\frac{P(X([T])|X_0)}{P[\tilde{X}([T])|\tilde{X}_0]}\right ] &amp;= \int^T_0dt\odot^{1-\lambda}\left [-\frac{\dot{X}\cdot X}{2}\right ] - \int^T_0dt\odot^{\lambda}\left [\frac{\dot{X}\cdot X}{2}\right ] \\
+&amp;=\int^T_0dt\odot^{\frac{1}{2}}[-\dot{X}\cdot X]
+\end{align}
+$$&lt;p&gt;当然这个式子显然是与熵产生有关的，下面会给出更具体的推导：
+从总熵产生开始，有：
+&lt;/p&gt;
+$$
+\begin{align}
+\Delta S_{\text{tot}} &amp;= \ln \left (\frac{P[X([T])]}{P[\tilde{X}([T])]}\right ) \\
+&amp;= \ln\left (\frac{P(X([T])|X_0)\cdot p(X(0),0)}{P[\tilde{X}([T])|\tilde{X}_0]\cdot p(X(T),T)}\right )\\
+&amp;=\ln\left (\frac{P(X([T])|X_0)}{P[\tilde{X}([T])|\tilde{X}_0]}\right )+\ln\left (\frac{p(X(0),0)}{p(X(T),T)}\right )
+\end{align}
+$$&lt;p&gt;
+这里第一项就是前式，我们从推导过程可以知道这个熵产生是由扩散路径造成的，因此可以解释为耗散到环境中的熵，这里作者将这项称为环境的熵变$\Delta S_{E}$。
+而第二项代表起始点和终点系统的两个平衡态的熵变$\Delta S$
+&lt;/p&gt;
+$$
+\Delta S=\ln \left [\frac{exp(-(X(0)-\mu)^2/2)+exp(-(X(0)+\mu)^2/2)}{exp(-(X(T)-\mu e^{-T})^2/2)+exp(-(X(T)+\mu e^{-T})^2/2)}\right ]
+$$&lt;p&gt;做完上述推导，作者简单指出这个过程的积分涨落定理可以接着如下推导：
+&lt;/p&gt;
+$$
+\begin{align}
+\langle e^{-\Delta S_{tot}}\rangle &amp;= \int P[X([T])]e^{-\Delta S_{tot}}d X([T])\\
+&amp;=\int P[\tilde{X}([T])]d\tilde{X}([T])\\
+&amp;=1
+\end{align}
+$$&lt;p&gt;并且作者对此通过了一个一维OU过程的实验验证了上述数学结果，我们可以看到随着轨迹增加，平均值收敛于1。
+&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;积分涨落定理验证&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;313-随机熵产生stochastic-entropy-production率&#34;&gt;3.1.3 随机熵产生(Stochastic entropy production)率
+&lt;/h4&gt;&lt;p&gt;接着前述OU process的描述，其Fokker-Planck方程可以写出：
+&lt;/p&gt;
+$$
+\frac{\partial p(X_t,t)}{\partial t}=-\nabla\cdot f(X_t,t)p(X_t,t) + \sum^d_{i=1}\frac{\partial^2 p(X_t,t)}{\partial X^2_i}=-\nabla\cdot J
+$$&lt;p&gt;
+由此可知这里概率流为$J=f(X_t,t)p(X_t,t)-\nabla p(X_t,t)$。
+这里定义Stochastic entropy为$\mathbb{S}(t)=-\ln p(X_t,t)$，那么接着推导这个熵的熵变化率
+&lt;/p&gt;
+$$
+\begin{align}
+\dot{\mathbb{S}}(t)&amp;=-\frac{1}{p(X_t,t)}\frac{dp(X_t,t)}{dt}\\
+&amp;=-\frac{1}{p(X_t,t)}(\frac{\partial p(X_t,t)}{\partial t}+\nabla p(X_t,t)\dot{X})
+\end{align}
+$$&lt;p&gt;
+我们将前面概率流的式子带入可得
+&lt;/p&gt;
+$$
+\dot{\mathbb{S}}(t)=-\frac{\partial_t p(X_t,t)}{p(X_t,t)}-f(X_t,t)\cdot\dot{X}+\frac{J\cdot\dot{X}}{p(X_t,t)}
+$$&lt;p&gt;
+在这里观察可以发现第二项$f(X_t,t)\cdot\dot{X}$与Langevin方程中的摩擦项$-\gamma \dot{x}$有着相似的形式，它可以被看作这个随机过程中环境的热耗散过程，这里作者认为$\dot{\mathbb{S}}_E(t)=f(X_t,t)\dot{X}$，那么就可以定义总的熵产生率为
+&lt;/p&gt;
+$$
+\dot{\mathbb{S}}_{tot}(t)=\dot{\mathbb{S}}(t)+\dot{\mathbb{S}}_{E}(t)=-\frac{\partial_t p(X_t,t)}{p(X_t,t)}+\frac{J\cdot\dot{X}}{p(X_t,t)}
+$$&lt;p&gt;这里作者通过10000个前向OU过程根据其推导统计了一些熵变数据，图如下
+&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;正向OU过程的熵与熵产生统计&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;32-逆向生成动力学中的非平衡物理&#34;&gt;3.2 逆向生成动力学中的非平衡物理
+&lt;/h3&gt;&lt;h4 id=&#34;321-反向过程的随机微分方程&#34;&gt;3.2.1 反向过程的随机微分方程
+&lt;/h4&gt;&lt;p&gt;根据前向扩散过程我们来考虑对应的逆向生成过程，首先由贝叶斯定理可得：
+&lt;/p&gt;
+$$
+P(X_t,t|X_{t+dt},t+dt)=\frac{P(X_{t+dt},t+dt|X_t,t)}{p(X_{t+dt},t+dt)}p(X_t,t)
+$$&lt;p&gt;接着由扩散过程方程$dX_t=f(X_t,t)dt+\sqrt{2}dW$，我们可知$X_{t+dt}-X_t=f(X_t,t)dt+\sqrt{2dt}\eta_t$，于是
+&lt;/p&gt;
+$$
+P(X_{t+dt},t+dt|X_t,t)\varpropto \exp\left [-\frac{(X_{t+dt}-X_t-f(X_t,t)dt)^2}{4dt} \right ]
+$$&lt;p&gt;而另一方面
+&lt;/p&gt;
+$$
+\begin{align}
+\frac{p(X_t,t)}{p(X_{t+dt},t+dt)}&amp;=\exp[-(\ln p(X_{t+dt},t+dt)-\ln p(X_t,t))]\\
+&amp;=\exp\left[-(dX\cdot\nabla\ln p(X_t,t)+dt\cdot\frac{\partial \ln p(X_t,t)}{\partial t})\right]
+\end{align}
+$$&lt;p&gt;将所有上述组件带回最初的公式，并利用一些技巧进行推导如下
+&lt;/p&gt;
+$$
+\begin{align}
+P(X_t,t|X_{t+dt},t+dt)&amp;\varpropto\exp\left[-\frac{(X_{t+dt}-X_t-f(X_t,t)dt)^2}{4dt}-dX\cdot\nabla\ln p(X_t,t)-dt\cdot\frac{\partial \ln p(X_t,t)}{\partial t}\right]\\
+&amp;\varpropto\exp\left[-\frac{(X_{t+dt}-X_t-f(X_t,t)dt)^2+4(X_{t+dt}-X_t)\nabla\ln p(X_t,t)dt+\mathcal{O}(dt^2)}{4dt}\right]\\
+&amp;\thickapprox\exp\left[-\frac{(X_{t+dt}-X_t)^2-2(X_{t+dt}-X_t)f(X_t,t)dt+2(X_{t+dt}-X_t)2\nabla\ln p(X_t,t)dt+f^2(X_t,t)dt^2}{4dt}\right]\\
+&amp;=\exp\left[-\frac{(X_t-X_{t+dt})^2+2(X_t-X_{t+dt})[f(X_t,t)-2\nabla\ln p(X_t,t)]dt+f^2(X_t,t)dt^2}{4dt}\right]\\
+&amp;\thickapprox\exp\left[-\frac{(X_t-X_{t+dt})^2+2(X_t-X_{t+dt})[f(X_t,t)-2\nabla\ln p(X_t,t)]dt+[f(X_t,t)-2\nabla\ln p(X_t,t)]^2dt^2}{4dt}\right]\\
+&amp;=\exp\left [-\frac{\lVert(X_t-X_{t+dt})+[f(X_t,t)-2\nabla\ln p(X_t,t)]dt\rVert^2}{4dt}\right ]
+\end{align}
+$$&lt;p&gt;将这个形式对比正向扩散过程，我们可以简单类比得到逆向动力学的方程为
+&lt;/p&gt;
+$$
+\dot{X}=f(X_t,t)-2\nabla\ln p(X_t,t)+\sqrt{2}\xi
+$$&lt;p&gt;
+这个结果与&lt;a class=&#34;link&#34; href=&#34;https://www.sciencedirect.com/science/article/pii/0304414982900515&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Brian DO Anderson. Reverse-time diffusion equation models. Stochastic Processes and their Applications, 12(3):313–326, 1982.&lt;/a&gt; 结果相符合&lt;/p&gt;
+&lt;h4 id=&#34;322-训练的评价函数&#34;&gt;3.2.2 训练的评价函数
+&lt;/h4&gt;&lt;p&gt;Denoise Net往往有这样的loss形式$\mathcal{L}(\theta)=E[\lVert s_{\theta}(x,t)-\nabla\ln p(x,t)\rVert^2]$（可以参考&lt;a class=&#34;link&#34; href=&#34;https://direct.mit.edu/neco/article/23/7/1661/7677/A-Connection-Between-Score-Matching-and-Denoising&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;A Connection Between Score Matching and Denoising Autoencoders&lt;/a&gt;），而参考引文&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2307.01178&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Learning Mixtures of Gaussians Using the DDPM Objective&lt;/a&gt;我们另外可以知道$\nabla \ln p(X_t,t)=\tanh(\mu_t^TX_t)\mu_t-X_t$，这部分将在后面有用&lt;/p&gt;
+&lt;h4 id=&#34;323-势能和自由能&#34;&gt;3.2.3 势能和自由能
+&lt;/h4&gt;&lt;p&gt;作者参考这篇论文&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2305.19693&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Spontaneous Symmetry Breaking in Generative Diffusion Models&lt;/a&gt;中推导出的generative SDE形式，并结合向前推导的逆向过程方程$\dot{X}=f(X_t,t)-2\nabla\ln p(X_t,t)+\sqrt{2}\xi$，令$t=T-s$可得
+&lt;/p&gt;
+$$
+\begin{align}
+d\tilde{X}_s&amp;=[2\nabla\ln p(\tilde{X}_s,T-s)-f(\tilde{X}_s,T-s)]ds+\sqrt{2}dW\\
+&amp;=-\nabla U(\tilde{X}_s,T-s)+\sqrt{2}dW
+\end{align}
+$$&lt;p&gt;
+这里$U(\tilde{X}_s,T-s)$可以看作逆过程的势能（参考过阻尼情况下的朗之万方程，广义位移与力可以直接关联）。
+同样参考上述论文和此处的推导形式，可以写出
+&lt;/p&gt;
+$$
+\begin{align}
+U&amp;=-2\ln p(\tilde{X}_s,T-s)+\int^{\tilde{X}_s}_0 f(Z,T-s)dZ\\\
+&amp;=\frac{1}{2}\tilde{X}_s^2-2\ln\cosh(\tilde{X}_s\cdot\mu e^{-(T-s)})\\
+&amp;=\frac{1}{2}X_t^2-2\ln\cosh(X_t\cdot \mu e^{-t})
+\end{align}
+$$&lt;p&gt;然后参考前向扩散过程，我们知道：
+&lt;/p&gt;
+$$
+\begin{align}
+p(X_t,t)&amp;=\int\mathcal{N}(X_t;X_0e^{-t},\Sigma_t I_d)p(X_0)dX_0\\
+\nabla \ln p(X_t,t)&amp;=\Sigma^{-1}\left[\frac{\int\mathcal{N}(X_t;X_0e^{-t},\Sigma_t I_d)p(X_0)X_0 e^{-t}dX_0}{\int\mathcal{N}(X_t;X_0e^{-t},\Sigma_t I_d)p(X_0)dX_0}-X_t\right]\\
+&amp;=\Sigma^{-1}[\langle X_0e^{-t}\rangle-X_t]
+\end{align}
+$$&lt;p&gt;接着利用贝叶斯定理
+&lt;/p&gt;
+$$
+\begin{align}
+P(X_0|X_t)&amp;=\frac{P(X_t|X_0)p(X_0)}{p(X_t)}\\
+&amp;=\frac{\mathcal{N}(X_0 e^{-t},\Sigma_t I_d)p(X_0)}{p(X_t)}\\
+&amp;\varpropto \exp\left[-\frac{1}{2}(X_t-X_0 e^{-t})^T\Sigma^{-1}(X_t-X_0e^{-t})+\ln p(X_0)\right]
+\end{align}
+$$&lt;p&gt;
+据此我们可以写出平衡态哈密顿量$\mathcal{H}(X_0|X_t)=\frac{1}{2}(X_t-X_0 e^{-t})^T\Sigma^{-1}(X_t-X_0e^{-t})-\ln p(X_0)$,那么可以写出对应的配分函数$Z(X_t,t)=\int e^{-\mathcal{H}(X_0|X_t)}dX_0$，接着就可以得到自由能形式$F(X_t,t)=-\frac{1}{\beta}\ln Z(X_t,t)$，这里取$\beta=\Sigma^{-1}_t$，那么有
+&lt;/p&gt;
+$$
+\begin{align}
+\nabla F(X_t,t)&amp;=\nabla\left(-\frac{1}{\beta}\ln Z(X_t,t)\right)\\
+&amp;=-\frac{1}{\beta}\frac{\nabla Z(X_t,t)}{Z(X_t,t)}\\
+&amp;=-\langle X_0e^{-t}\rangle+X_t
+\end{align}
+$$&lt;p&gt;
+那么结合上面推导的$\nabla\ln p(X_t,t)$的形式得到$\nabla F(X_t,t)=-\frac{1}{\beta}\nabla\ln p(X_t,t)$，结合作者这里的mixture Gaussian情景并参考前面U的推导过程可以简单得到
+&lt;/p&gt;
+$$
+F=-\frac{1}{\beta}\ln\cosh(X_t\cdot\mu_t)+\frac{1}{2\beta}X_t^2
+$$&lt;p&gt;另外参考最开始reverse SDE的推导中的$\nabla U$的形式部分我们可以写出$-\nabla \tilde{F}=2\nabla\ln p-f$，进而我们能够得到
+&lt;/p&gt;
+$$
+\tilde{F}=2\beta F+\int fd\tilde{X}_s
+$$&lt;p&gt;
+这里带入$F$形式后可以观察到$\tilde{F}$与最开始定义的potential $U$的形式相一致，那么观察reverse SDE的形式后我们可以从物理上对逆向动力学过程解释为平均来说指向自由能梯度向下，即最小化自由能的过程，带入DDPM中逆向过程对应于生成过程，我们可以认为生成的样本满足最小自由能原理。&lt;/p&gt;
+&lt;p&gt;根据这个potential,作者展示了reverse dynamics中的自发对称破缺和相图
+&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;相变&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;相图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;结合我们上述得到的最小自由能解释，我们可以知道这样的生成系统在哪些区域可以正确生成样本，即如果进入no symmetry breaking或者unstable symmetry breaking情形下，我们无法在X非0处期望有U极小值存在，这将在逆向过程中意味着生成采样失败。&lt;/p&gt;
+&lt;h4 id=&#34;324-逆向动力学的涨落定理及其熵产生&#34;&gt;3.2.4 逆向动力学的涨落定理及其熵产生
+&lt;/h4&gt;&lt;p&gt;参考上一节推导的最初的包含potential U形式的reverse SDE形式并带入后续得到的U的具体形式，我们可以更进一步写出reverse SDE:
+&lt;/p&gt;
+$$
+dX_t=-(2\tanh(\mu_t^TX_t)\mu_t-X_t)dt+\sqrt{2}dW
+$$&lt;p&gt;
+统一时间方向为diffusion的正向，我们令$s=T-t$
+&lt;/p&gt;
+$$
+d\tilde{X}_s=[2\tanh(\mu_{T-s}^T\tilde{X}_{s})\mu_{T-s}-\tilde{X}_s]ds+\sqrt{2}dW
+$$&lt;p&gt;
+后面的推导过程都可以仿照前面的前向动力学部分，最终作者得到
+Reverse dynamics的积分涨落定理
+&lt;/p&gt;
+$$
+\langle e^{-S_{tot}}\rangle=1
+$$&lt;p&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;逆向的积分涨落&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;325-玻璃态转变&#34;&gt;3.2.5 玻璃态转变
+&lt;/h4&gt;&lt;p&gt;作者在这一节使用自旋玻璃有关的推导，并采用自旋玻璃研究中常用的Franzi-Parisi potential来表征了一下这个系统，如下图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;franzi-parisi&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在自旋玻璃的研究中，通常认为在Franzi-Parisi potential表征下，Q&amp;gt;0处出现一个次级极小值，则意味着系统在低温下倾向于进入一个亚稳态，着同样对应于系统的玻璃态。而在这里通过Franzi-Parisi势的表征可以看到对于reverse dynamics的生成过程同样是存在一个物理意义上的玻璃态转变的&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

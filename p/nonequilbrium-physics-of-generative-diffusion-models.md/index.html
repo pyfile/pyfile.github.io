@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Paper Reading">
+<title>Nonequilbrium physics of generative diffusion models.md</title>
+
+<link rel='canonical' href='http://localhost:1313/p/nonequilbrium-physics-of-generative-diffusion-models.md/'>
+
+<link rel="stylesheet" href="/scss/style.min.260e2d7423d0fffeb60af1eeb125e1bd954318ce07793d06a76018be447179bb.css"><meta property='og:title' content="Nonequilbrium physics of generative diffusion models.md">
+<meta property='og:description' content="Paper Reading">
+<meta property='og:url' content='http://localhost:1313/p/nonequilbrium-physics-of-generative-diffusion-models.md/'>
+<meta property='og:site_name' content='KiKi&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Diffusion Model' /><meta property='article:tag' content='Nonequilbrium Physics' /><meta property='article:published_time' content='2025-05-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-05-13T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Nonequilbrium physics of generative diffusion models.md">
+<meta name="twitter:description" content="Paper Reading">
+    <link rel="shortcut icon" href="/R-C.ico" />
+<style>
+    ::selection {
+    color: #fff;
+    background: #557697;
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-regular/result.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaimonogb-regular/result.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/lxgwwenkaigbscreen/result.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/lxgwwenkaimonogbscreen/result.css" />
+<style>
+	:root {
+	  --sys-font-family: "LXGW WenKai GB", -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue";
+	  --zh-font-family: "LXGW WenKai GB", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Open Sans", "Noto Sans SC", "Noto Color Emoji", "Microsoft YaHei";
+	  --base-font-family: "LXGW WenKai GB", "Open Sans", "Noto Sans SC", "Noto Color Emoji";
+	  --code-font-family: "LXGW WenKai Mono GB", "Cascadia Code", "Source Sans Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
+	  --article-font-family: "LXGW WenKai GB", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Open Sans", "Noto Sans SC", "Noto Color Emoji", "Microsoft YaHei";
+	}
+</style>
+
+<head></head>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_e0bc96fe347799d2.png" width="300"
+                            height="287" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">KiKi&#39;s Blog</a></h1>
+            <h2 class="site-description">MD means More is Different</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/pyfile'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                                    <option value="http://localhost:1313/" selected>中文</option>
+                                
+                                    <option value="http://localhost:1313/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#背景知识">背景知识</a>
+      <ol>
+        <li><a href="#生成扩散模型以ddpm为例">生成扩散模型&ndash;以DDPM为例</a></li>
+        <li><a href="#与langevin方程的关联">与Langevin方程的关联</a></li>
+        <li><a href="#ou-process">OU process</a>
+          <ol>
+            <li><a href="#wiener-process">Wiener Process</a></li>
+            <li><a href="#ornstein-ulhenbeck-process">Ornstein-Ulhenbeck Process</a></li>
+            <li><a href="#ou-process的fokker-planck方程">OU process的Fokker-Planck方程</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#详细内容">详细内容</a>
+      <ol>
+        <li><a href="#前向扩散过程中的非平衡物理">前向（扩散）过程中的非平衡物理</a>
+          <ol>
+            <li><a href="#前向扩散的动力学过程">前向扩散的动力学过程</a></li>
+            <li><a href="#扩散过程的涨落定理">扩散过程的涨落定理</a></li>
+            <li><a href="#随机熵产生stochastic-entropy-production率">随机熵产生(Stochastic entropy production)率</a></li>
+          </ol>
+        </li>
+        <li><a href="#逆向生成动力学中的非平衡物理">逆向生成动力学中的非平衡物理</a>
+          <ol>
+            <li><a href="#反向过程的随机微分方程">反向过程的随机微分方程</a></li>
+            <li><a href="#训练的评价函数">训练的评价函数</a></li>
+            <li><a href="#势能和自由能">势能和自由能</a></li>
+            <li><a href="#逆向动力学的涨落定理及其熵产生">逆向动力学的涨落定理及其熵产生</a></li>
+            <li><a href="#玻璃态转变">玻璃态转变</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/paper-reading/" style="background-color: #2a9d8f; color: #fff;">
+                Paper Reading
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/nonequilbrium-physics-of-generative-diffusion-models.md/">Nonequilbrium physics of generative diffusion models.md</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Paper Reading
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 13, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 10 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><a class="link" href="http://arxiv.org/abs/2405.11932"  target="_blank" rel="noopener"
+    >原文地址</a></p>
+<h2 id="简介">简介
+</h2><p>生成扩散模型将物理学中的朗之万动力学概念应用于机器学习，吸引了工程学、统计学和物理学领域的广泛关注，但对其内在机制的完整描述仍然缺乏。本文对扩散模型进行了清晰的物理分析，运用涨落定理、熵产生、平衡测度和弗朗兹-帕里西势来理解动态过程和内在相变。分析基于正向和反向动力学的路径积分表示，并将反向扩散生成过程视为统计推断，其中时间相关的状态变量充当类似于自旋玻璃理论中的猝灭无序。最终这个研究将随机热力学、统计推断和基于几何的分析联系在一起，从而对生成扩散模型的工作原理给出了一个连贯的描述。</p>
+<h2 id="背景知识">背景知识
+</h2><h3 id="生成扩散模型以ddpm为例">生成扩散模型&ndash;以DDPM为例
+</h3><p>这里以DDPM讲解生成扩散模型的基本数学过程。
+逆过程：数据$\mathbf{x}<em>0$，潜空间变量$\mathbf{x}<em>1(&hellip;\mathbf{x}<em>T)$，这一系列变量的联合分布$p</em>\theta(\mathbf{x}</em>{0:T})$被称为逆过程
+首先对于数据与所对应的潜变量的系列运动过程定义为高斯过程的马尔可夫链，那么得到起点$p(\mathbf{x}<em>T)=\mathcal{N}(\mathbf{x}<em>T;0,I)$
+$$
+\begin{align}
+&amp;p</em>\theta(\mathbf{x}</em>{0:T}):=p(\mathbf{x}<em>T)\prod^T</em>{t=1}p</em>\theta(\mathbf{x}<em>{t-1}|\mathbf{x}<em>t) \
+&amp;p</em>\theta(\mathbf{x}</em>{t-1}|\mathbf{x}<em>t):=\mathcal{N}(x</em>{t-1};\mu_\theta(x_t,t),\Sigma_\theta(\mathbf{x}<em>t,t))
+\end{align}
+$$
+扩散过程：近似后验$q(\mathbf{x}</em>{1:T}|\mathbf{x}<em>0)$，被固定在马尔可夫链上并逐渐根据方差表添加高斯噪声得到
+$$
+\begin{align}
+&amp;q(\mathbf{x}</em>{1:T}|\mathbf{x}<em>0):=\prod^T</em>{t=1}q(\mathbf{x}<em>t|\mathbf{x}</em>{t-1}) \
+&amp;q(\mathbf{x}<em>t|\mathbf{x}</em>{t-1}):=\mathcal{N}(\mathbf{x}<em>t;\sqrt{1-\beta_t}\mathbf{x}</em>{t-1},\beta_t\mathbf{I})
+\end{align}
+$$</p>
+<h3 id="与langevin方程的关联">与Langevin方程的关联
+</h3><p>$$
+m\frac{d^2x}{dt^2}=-\gamma\frac{dx}{dt}+F(x)+\xi(t)
+$$
+那么在过阻尼($m\rightarrow0$)与无保守力$F(x)=0$的情形下，方程可以被整理为
+$$
+\frac{dx}{dt}=\frac{1}{\gamma}\xi(t)
+$$
+那么这与生成扩散模型的扩散过程能够对应上。</p>
+<h3 id="ou-process">OU process
+</h3><h4 id="wiener-process">Wiener Process
+</h4><p>连续时间随机过程，通常一个Wiener process用符号$W_t$描述，有三个性质：</p>
+<ol>
+<li>$W_0=0$</li>
+<li>$t\rightarrow W_t$在正实数范围内几乎处处连续</li>
+<li>对所有的$0\leq s&lt;t$，$W_t-W_s\sim\mathcal{N}(0,t-s)$</li>
+</ol>
+<h4 id="ornstein-ulhenbeck-process">Ornstein-Ulhenbeck Process
+</h4><p>由wiener process扩展而来的随机过程，由以下随机微分方程描述
+$$
+dx_t=-\theta x_tdt+\sigma dW_t
+$$
+其中参数$\theta &gt; 0,\sigma &gt; 0$，$\mu$表示回归均值。
+同时虽然维纳过程的路径在数学上几乎处处不可微（其在任意点处都无法定义导数），但是在工程和物理上，通常将$\frac{dW_t}{dt}$视为白噪声，记作$\xi_t$。并且由于可微性的问题，其离散化需要一些特殊的处理方式：
+$$
+W(t)=\int^t_{t_0}dt&rsquo;\xi(t&rsquo;)=\int^t_{t_0}dW
+$$</p>
+<p>那么其随机积分表述为$\int^t_{t_0}dt&rsquo;\xi(t&rsquo;)f(X_t,t)=\int^t_{t_0}dW f(x_t,t)$，被称作Riemann-Steltjes积分，在这个基础上，这个积分通常有两种约定形式：
+Ito约定，起点方案：
+$$
+\int^t_{t_0}dWf(X_t,t)=\lim_{dt\rightarrow0}\sum^N_{k=0}[W(t_k+dt)-W(t_k)]f(X(t_k),t_k)
+$$
+$t_k=t_0+kdt,N=\frac{t-t_0}{dt}$</p>
+<p>Stratonovich约定，中点方案：
+$$
+\int^t_{t_0}dWf(X_t,t)=\lim_{dt\rightarrow0}\sum^N_{k=0}[W(t_k+dt)-W(t_k)]f([X(t_k+dt)+X(t_k)]/2,t_k+dt/2)
+$$</p>
+<h4 id="ou-process的fokker-planck方程">OU process的Fokker-Planck方程
+</h4><p>形式为
+$$
+\frac{\partial P}{\partial t}=\theta \frac{\partial}{\partial x}(xP)+D\frac{\partial^2 P}{\partial x^2}
+$$
+$D=\sigma^2/2$，这个方程的解是
+$$
+P(x,t|x&rsquo;,t&rsquo;)=\sqrt{\frac{\theta}{2\pi D(1-e^{-2\theta(t-t&rsquo;)})}}exp\left[-\frac{\theta}{2D}\frac{(x-x&rsquo;e^{-\theta(t-t&rsquo;)})^2}{1-e^{-2\theta(t-t&rsquo;)}}\right]
+$$</p>
+<h2 id="详细内容">详细内容
+</h2><h3 id="前向扩散过程中的非平衡物理">前向（扩散）过程中的非平衡物理
+</h3><h4 id="前向扩散的动力学过程">前向扩散的动力学过程
+</h4><p>首先作者用一个OU过程描述了真实数据变成白噪声的过程：
+$$
+\dot{X}=-X+\sqrt{2}\xi
+$$
+其中$\xi$是一个高斯白噪声，并给定初值$X_0$。
+那么利用一些随机微分方程的知识，我们可以知道它的解的形式为：
+$$
+X_t=e^{-t}X_0+\sqrt{1-e^{-2t}}Z_t
+$$
+其中$Z_t$代表高斯分布的随机变量。
+接着作者为了分析方便，假定初始数据是一个两种高斯分布混合的形式：
+$$
+p(X_0)=\frac{1}{2}\mathcal{N}(\mu,\mathbf{I}_d)+\frac{1}{2}\mathcal{N}(-\mu,\mathbf{I}_d)
+$$</p>
+<p>那么在这种情况下，利用前述OU过程的方程，我们可以知道：
+$$
+\begin{align}
+p(X_t,t)&amp;=\int dX_0p(X_0)p(X_t|X_0)\
+&amp;=\int dX_0 p(X_0)\mathcal{N}(X_t;X_0 e^{-t},\mathbf{I}_d)\
+&amp;=\frac{1}{2}\mathcal{N}(X_t;\mu_t,\mathbf{I}_d)+\frac{1}{2}\mathcal{N}(X_t;-\mu_t,\mathbf{I}_d)
+\end{align}
+$$
+其中$\mu_t=\mu e^{-t}$。
+上述的分析可以清楚地让我们看出，为何DDPM可以那样被设计，为何能期望不断叠加高斯噪声最终能得到一个高斯分布的结果。
+这是本文中作者采用的模型试验的示意图
+<img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="示意图"
+	
+	
+></p>
+<h4 id="扩散过程的涨落定理">扩散过程的涨落定理
+</h4><p>扩散过程的公式起点：
+$$
+dX_t=f(X_t,t)dt+\sqrt{2}dW
+$$</p>
+<p>通常的离散化下可得：
+$$
+\frac{X_{t+dt}-X_t}{dt}=f((1-\lambda)X_t+\lambda X_{t+dt}, t+\lambda dt)+\eta_t
+$$
+这里$\eta_t\sim \mathcal{N}(0,2/dt)$
+接着，借助概率密度变换的公式，我们可知：
+$$
+P(X_{t&rsquo;},t&rsquo;|X_t,t)=P(\eta_t)\left |\frac{\partial \eta_t}{\partial X_{t&rsquo;}}\right |
+$$
+由前述离散化公式我们可以顺势计算概率密度变换的雅可比行列式
+$$
+\left |\frac{\partial \eta_t}{\partial X_{t&rsquo;}}\right |=\left |\frac{\partial (\frac{X_{t+dt}-X_t}{dt}-f((1-\lambda)X_t+\lambda X_{t+dt}, t+\lambda dt))}{\partial X_{t+dt}}\right |\varpropto e^{-\lambda\nabla\cdot fdt}
+$$</p>
+<p>结果带入前式可得
+$$
+P(X_{t+dt},t+dt|X_t,t)\varpropto e^{-\lambda\nabla\cdot fdt}e^{-\frac{|\dot{X}_t-f(X_t,t)|^2}{4}dt}
+$$</p>
+<p>那么结合马尔可夫条件，这种情况下以$X_0$为起点的轨迹的条件概率为：
+$$
+\begin{align}
+P(X([T])|X_0)&amp;=\prod_{t&rsquo;}P(X_{t&rsquo;},t&rsquo;|X_t,t)\
+&amp;=\prod_{t&rsquo;}e^{-\lambda\nabla\cdot fdt}e^{-\frac{|\dot{X}<em>t-f(X_t,t)|^2}{4}dt}\
+&amp;\varpropto e^{\int^T_0[-\lambda\nabla\cdot f-\frac{|\dot{X}<em>t-f(X_t,t)|^2}{4}]\odot^{\lambda}dt}
+\end{align}
+$$
+这里$\odot^\lambda$表示随机积分的$\lambda-$约定。
+事已至此，对比我们上一节提出的OU过程模型公式与作为推导起点的公式，我们可以简单令此处$f=-X$，同时需注意这里是d维的动力学公式，带入前式可得OU过程的轨迹概率为：
+$$
+\begin{align}
+P(X([T])|X_0)&amp;=\prod</em>{t&rsquo;}P(X</em>{t&rsquo;},t&rsquo;|X_t,t)\
+&amp;\varpropto exp\left (-\int^T_0[\frac{1}{4}(\dot{X}+X)^2-\lambda d]\odot^{\lambda}dt\right )
+\end{align}
+$$
+在这样的形式下，e指数的部分在物理中被称为action for the path probability，而这样被时间积分的作用函数称作Lagrangian $\mathcal{L}$。
+考察对应的逆过程$\tilde{X}(s)=X(t),s=T-t$，接着显然有$\tilde{X}(0)=X(T),\tilde{X}(T)=X(0),\dot{\tilde{X}}(s)=-\dot{X}(t)$，那么将上述带入前面的前向OU过程可得逆过程的概率：
+$$
+\begin{align}
+P[\tilde{X}([T])|\tilde{X}_0]&amp;\varpropto exp\left (-\int^T_0ds\odot^\lambda[(\dot{\tilde{X}}+\tilde{X})^2/4-\lambda d]\right ) \
+&amp;=exp\left (-\int^T_0dt\odot^{1-\lambda}[(-\dot{X}+X)^2/4-\lambda d]\right )
+\end{align}
+$$</p>
+<p>那么我们就有：
+$$
+\begin{align}
+ln\left [\frac{P(X([T])|X_0)}{P[\tilde{X}([T])|\tilde{X}_0]}\right ] &amp;= \int^T_0dt\odot^{1-\lambda}\left [-\frac{\dot{X}\cdot X}{2}\right ] - \int^T_0dt\odot^{\lambda}\left [\frac{\dot{X}\cdot X}{2}\right ] \
+&amp;=\int^T_0dt\odot^{\frac{1}{2}}[-\dot{X}\cdot X]
+\end{align}
+$$</p>
+<p>当然这个式子显然是与熵产生有关的，下面会给出更具体的推导：
+从总熵产生开始，有：
+$$
+\begin{align}
+\Delta S_{\text{tot}} &amp;= \ln \left (\frac{P[X([T])]}{P[\tilde{X}([T])]}\right ) \
+&amp;= \ln\left (\frac{P(X([T])|X_0)\cdot p(X(0),0)}{P[\tilde{X}([T])|\tilde{X}_0]\cdot p(X(T),T)}\right )\
+&amp;=\ln\left (\frac{P(X([T])|X_0)}{P[\tilde{X}([T])|\tilde{X}<em>0]}\right )+\ln\left (\frac{p(X(0),0)}{p(X(T),T)}\right )
+\end{align}
+$$
+这里第一项就是前式，我们从推导过程可以知道这个熵产生是由扩散路径造成的，因此可以解释为耗散到环境中的熵，这里作者将这项称为环境的熵变$\Delta S</em>{E}$。
+而第二项代表起始点和终点系统的两个平衡态的熵变$\Delta S$
+$$
+\Delta S=\ln \left [\frac{exp(-(X(0)-\mu)^2/2)+exp(-(X(0)+\mu)^2/2)}{exp(-(X(T)-\mu e^{-T})^2/2)+exp(-(X(T)+\mu e^{-T})^2/2)}\right ]
+$$</p>
+<p>做完上述推导，作者简单指出这个过程的积分涨落定理可以接着如下推导：
+$$
+\begin{align}
+\langle e^{-\Delta S_{tot}}\rangle &amp;= \int P[X([T])]e^{-\Delta S_{tot}}d X([T])\
+&amp;=\int P[\tilde{X}([T])]d\tilde{X}([T])\
+&amp;=1
+\end{align}
+$$</p>
+<p>并且作者对此通过了一个一维OU过程的实验验证了上述数学结果，我们可以看到随着轨迹增加，平均值收敛于1。
+<img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="积分涨落定理验证"
+	
+	
+></p>
+<h4 id="随机熵产生stochastic-entropy-production率">随机熵产生(Stochastic entropy production)率
+</h4><p>接着前述OU process的描述，其Fokker-Planck方程可以写出：
+$$
+\frac{\partial p(X_t,t)}{\partial t}=-\nabla\cdot f(X_t,t)p(X_t,t) + \sum^d_{i=1}\frac{\partial^2 p(X_t,t)}{\partial X^2_i}=-\nabla\cdot J
+$$
+由此可知这里概率流为$J=f(X_t,t)p(X_t,t)-\nabla p(X_t,t)$。
+这里定义Stochastic entropy为$\mathbb{S}(t)=-\ln p(X_t,t)$，那么接着推导这个熵的熵变化率
+$$
+\begin{align}
+\dot{\mathbb{S}}(t)&amp;=-\frac{1}{p(X_t,t)}\frac{dp(X_t,t)}{dt}\
+&amp;=-\frac{1}{p(X_t,t)}(\frac{\partial p(X_t,t)}{\partial t}+\nabla p(X_t,t)\dot{X})
+\end{align}
+$$
+我们将前面概率流的式子带入可得
+$$
+\dot{\mathbb{S}}(t)=-\frac{\partial_t p(X_t,t)}{p(X_t,t)}-f(X_t,t)\cdot\dot{X}+\frac{J\cdot\dot{X}}{p(X_t,t)}
+$$
+在这里观察可以发现第二项$f(X_t,t)\cdot\dot{X}$与Langevin方程中的摩擦项$-\gamma \dot{x}$有着相似的形式，它可以被看作这个随机过程中环境的热耗散过程，这里作者认为$\dot{\mathbb{S}}<em>E(t)=f(X_t,t)\dot{X}$，那么就可以定义总的熵产生率为
+$$
+\dot{\mathbb{S}}</em>{tot}(t)=\dot{\mathbb{S}}(t)+\dot{\mathbb{S}}_{E}(t)=-\frac{\partial_t p(X_t,t)}{p(X_t,t)}+\frac{J\cdot\dot{X}}{p(X_t,t)}
+$$</p>
+<p>这里作者通过10000个前向OU过程根据其推导统计了一些熵变数据，图如下
+<img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="正向OU过程的熵与熵产生统计"
+	
+	
+></p>
+<h3 id="逆向生成动力学中的非平衡物理">逆向生成动力学中的非平衡物理
+</h3><h4 id="反向过程的随机微分方程">反向过程的随机微分方程
+</h4><p>根据前向扩散过程我们来考虑对应的逆向生成过程，首先由贝叶斯定理可得：
+$$
+P(X_t,t|X_{t+dt},t+dt)=\frac{P(X_{t+dt},t+dt|X_t,t)}{p(X_{t+dt},t+dt)}p(X_t,t)
+$$</p>
+<p>接着由扩散过程方程$dX_t=f(X_t,t)dt+\sqrt{2}dW$，我们可知$X_{t+dt}-X_t=f(X_t,t)dt+\sqrt{2dt}\eta_t$，于是
+$$
+P(X_{t+dt},t+dt|X_t,t)\varpropto \exp\left [-\frac{(X_{t+dt}-X_t-f(X_t,t)dt)^2}{4dt} \right ]
+$$</p>
+<p>而另一方面
+$$
+\begin{align}
+\frac{p(X_t,t)}{p(X_{t+dt},t+dt)}&amp;=\exp[-(\ln p(X_{t+dt},t+dt)-\ln p(X_t,t))]\
+&amp;=\exp\left[-(dX\cdot\nabla\ln p(X_t,t)+dt\cdot\frac{\partial \ln p(X_t,t)}{\partial t})\right]
+\end{align}
+$$</p>
+<p>将所有上述组件带回最初的公式，并利用一些技巧进行推导如下
+$$
+\begin{align}
+P(X_t,t|X_{t+dt},t+dt)&amp;\varpropto\exp\left[-\frac{(X_{t+dt}-X_t-f(X_t,t)dt)^2}{4dt}-dX\cdot\nabla\ln p(X_t,t)-dt\cdot\frac{\partial \ln p(X_t,t)}{\partial t}\right]\
+&amp;\varpropto\exp\left[-\frac{(X_{t+dt}-X_t-f(X_t,t)dt)^2+4(X_{t+dt}-X_t)\nabla\ln p(X_t,t)dt+\mathcal{O}(dt^2)}{4dt}\right]\
+&amp;\thickapprox\exp\left[-\frac{(X_{t+dt}-X_t)^2-2(X_{t+dt}-X_t)f(X_t,t)dt+2(X_{t+dt}-X_t)2\nabla\ln p(X_t,t)dt+f^2(X_t,t)dt^2}{4dt}\right]\
+&amp;=\exp\left[-\frac{(X_t-X_{t+dt})^2+2(X_t-X_{t+dt})[f(X_t,t)-2\nabla\ln p(X_t,t)]dt+f^2(X_t,t)dt^2}{4dt}\right]\
+&amp;\thickapprox\exp\left[-\frac{(X_t-X_{t+dt})^2+2(X_t-X_{t+dt})[f(X_t,t)-2\nabla\ln p(X_t,t)]dt+[f(X_t,t)-2\nabla\ln p(X_t,t)]^2dt^2}{4dt}\right]\
+&amp;=\exp\left [-\frac{\lVert(X_t-X_{t+dt})+[f(X_t,t)-2\nabla\ln p(X_t,t)]dt\rVert^2}{4dt}\right ]
+\end{align}
+$$</p>
+<p>将这个形式对比正向扩散过程，我们可以简单类比得到逆向动力学的方程为
+$$
+\dot{X}=f(X_t,t)-2\nabla\ln p(X_t,t)+\sqrt{2}\xi
+$$
+这个结果与<a class="link" href="https://www.sciencedirect.com/science/article/pii/0304414982900515"  target="_blank" rel="noopener"
+    >Brian DO Anderson. Reverse-time diffusion equation models. Stochastic Processes and their Applications, 12(3):313–326, 1982.</a> 结果相符合</p>
+<h4 id="训练的评价函数">训练的评价函数
+</h4><p>Denoise Net往往有这样的loss形式$\mathcal{L}(\theta)=E[\lVert s_{\theta}(x,t)-\nabla\ln p(x,t)\rVert^2]$（可以参考<a class="link" href="https://direct.mit.edu/neco/article/23/7/1661/7677/A-Connection-Between-Score-Matching-and-Denoising"  target="_blank" rel="noopener"
+    >A Connection Between Score Matching and Denoising Autoencoders</a>），而参考引文<a class="link" href="https://arxiv.org/pdf/2307.01178"  target="_blank" rel="noopener"
+    >Learning Mixtures of Gaussians Using the DDPM Objective</a>我们另外可以知道$\nabla \ln p(X_t,t)=\tanh(\mu_t^TX_t)\mu_t-X_t$，这部分将在后面有用</p>
+<h4 id="势能和自由能">势能和自由能
+</h4><p>作者参考这篇论文<a class="link" href="https://arxiv.org/pdf/2305.19693"  target="_blank" rel="noopener"
+    >Spontaneous Symmetry Breaking in Generative Diffusion Models</a>中推导出的generative SDE形式，并结合向前推导的逆向过程方程$\dot{X}=f(X_t,t)-2\nabla\ln p(X_t,t)+\sqrt{2}\xi$，令$t=T-s$可得
+$$
+\begin{align}
+d\tilde{X}_s&amp;=[2\nabla\ln p(\tilde{X}_s,T-s)-f(\tilde{X}_s,T-s)]ds+\sqrt{2}dW\
+&amp;=-\nabla U(\tilde{X}_s,T-s)+\sqrt{2}dW
+\end{align}
+$$
+这里$U(\tilde{X}_s,T-s)$可以看作逆过程的势能（参考过阻尼情况下的朗之万方程，广义位移与力可以直接关联）。
+同样参考上述论文和此处的推导形式，可以写出
+$$
+\begin{align}
+U&amp;=-2\ln p(\tilde{X}_s,T-s)+\int^{\tilde{X}_s}_0 f(Z,T-s)dZ\\
+&amp;=\frac{1}{2}\tilde{X}_s^2-2\ln\cosh(\tilde{X}_s\cdot\mu e^{-(T-s)})\
+&amp;=\frac{1}{2}X_t^2-2\ln\cosh(X_t\cdot \mu e^{-t})
+\end{align}
+$$</p>
+<p>然后参考前向扩散过程，我们知道：
+$$
+\begin{align}
+p(X_t,t)&amp;=\int\mathcal{N}(X_t;X_0e^{-t},\Sigma_t I_d)p(X_0)dX_0\
+\nabla \ln p(X_t,t)&amp;=\Sigma^{-1}\left[\frac{\int\mathcal{N}(X_t;X_0e^{-t},\Sigma_t I_d)p(X_0)X_0 e^{-t}dX_0}{\int\mathcal{N}(X_t;X_0e^{-t},\Sigma_t I_d)p(X_0)dX_0}-X_t\right]\
+&amp;=\Sigma^{-1}[\langle X_0e^{-t}\rangle-X_t]
+\end{align}
+$$</p>
+<p>接着利用贝叶斯定理
+$$
+\begin{align}
+P(X_0|X_t)&amp;=\frac{P(X_t|X_0)p(X_0)}{p(X_t)}\
+&amp;=\frac{\mathcal{N}(X_0 e^{-t},\Sigma_t I_d)p(X_0)}{p(X_t)}\
+&amp;\varpropto \exp\left[-\frac{1}{2}(X_t-X_0 e^{-t})^T\Sigma^{-1}(X_t-X_0e^{-t})+\ln p(X_0)\right]
+\end{align}
+$$
+据此我们可以写出平衡态哈密顿量$\mathcal{H}(X_0|X_t)=\frac{1}{2}(X_t-X_0 e^{-t})^T\Sigma^{-1}(X_t-X_0e^{-t})-\ln p(X_0)$,那么可以写出对应的配分函数$Z(X_t,t)=\int e^{-\mathcal{H}(X_0|X_t)}dX_0$，接着就可以得到自由能形式$F(X_t,t)=-\frac{1}{\beta}\ln Z(X_t,t)$，这里取$\beta=\Sigma^{-1}_t$，那么有
+$$
+\begin{align}
+\nabla F(X_t,t)&amp;=\nabla\left(-\frac{1}{\beta}\ln Z(X_t,t)\right)\
+&amp;=-\frac{1}{\beta}\frac{\nabla Z(X_t,t)}{Z(X_t,t)}\
+&amp;=-\langle X_0e^{-t}\rangle+X_t
+\end{align}
+$$
+那么结合上面推导的$\nabla\ln p(X_t,t)$的形式得到$\nabla F(X_t,t)=-\frac{1}{\beta}\nabla\ln p(X_t,t)$，结合作者这里的mixture Gaussian情景并参考前面U的推导过程可以简单得到
+$$
+F=-\frac{1}{\beta}\ln\cosh(X_t\cdot\mu_t)+\frac{1}{2\beta}X_t^2
+$$</p>
+<p>另外参考最开始reverse SDE的推导中的$\nabla U$的形式部分我们可以写出$-\nabla \tilde{F}=2\nabla\ln p-f$，进而我们能够得到
+$$
+\tilde{F}=2\beta F+\int fd\tilde{X}_s
+$$
+这里带入$F$形式后可以观察到$\tilde{F}$与最开始定义的potential $U$的形式相一致，那么观察reverse SDE的形式后我们可以从物理上对逆向动力学过程解释为平均来说指向自由能梯度向下，即最小化自由能的过程，带入DDPM中逆向过程对应于生成过程，我们可以认为生成的样本满足最小自由能原理。</p>
+<p>根据这个potential,作者展示了reverse dynamics中的自发对称破缺和相图
+<img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="相变"
+	
+	
+>
+<img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="相图"
+	
+	
+></p>
+<p>结合我们上述得到的最小自由能解释，我们可以知道这样的生成系统在哪些区域可以正确生成样本，即如果进入no symmetry breaking或者unstable symmetry breaking情形下，我们无法在X非0处期望有U极小值存在，这将在逆向过程中意味着生成采样失败。</p>
+<h4 id="逆向动力学的涨落定理及其熵产生">逆向动力学的涨落定理及其熵产生
+</h4><p>参考上一节推导的最初的包含potential U形式的reverse SDE形式并带入后续得到的U的具体形式，我们可以更进一步写出reverse SDE:
+$$
+dX_t=-(2\tanh(\mu_t^TX_t)\mu_t-X_t)dt+\sqrt{2}dW
+$$
+统一时间方向为diffusion的正向，我们令$s=T-t$
+$$
+d\tilde{X}<em>s=[2\tanh(\mu</em>{T-s}^T\tilde{X}<em>{s})\mu</em>{T-s}-\tilde{X}<em>s]ds+\sqrt{2}dW
+$$
+后面的推导过程都可以仿照前面的前向动力学部分，最终作者得到
+Reverse dynamics的积分涨落定理
+$$
+\langle e^{-S</em>{tot}}\rangle=1
+$$
+<img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="逆向的积分涨落"
+	
+	
+></p>
+<h4 id="玻璃态转变">玻璃态转变
+</h4><p>作者在这一节使用自旋玻璃有关的推导，并采用自旋玻璃研究中常用的Franzi-Parisi potential来表征了一下这个系统，如下图
+<img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-8.7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="franzi-parisi"
+	
+	
+></p>
+<p>在自旋玻璃的研究中，通常认为在Franzi-Parisi potential表征下，Q&gt;0处出现一个次级极小值，则意味着系统在低温下倾向于进入一个亚稳态，着同样对应于系统的玻璃态。而在这里通过Franzi-Parisi势的表征可以看到对于reverse dynamics的生成过程同样是存在一个物理意义上的玻璃态转变的</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/diffusion-model/">Diffusion Model</a>
+        
+            <a href="/tags/nonequilbrium-physics/">Nonequilbrium Physics</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Thermodynamic Bounds on Symmetry Breaking in Linear and Catalytic Biochemical Systems</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/deep-symbolic-regression-for-physics-guided-by-units-constraints-toward-the-automated-discovery-of-physical-laws/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Deep symbolic regression for physics guided by units constraints: toward the automated discovery of physical laws</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 KiKi&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.d4420f723864127b8d29a1f46195dd9f1a648b887d47b27e22d4be6d4cf7c432.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+SC:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+    </body>
+</html>

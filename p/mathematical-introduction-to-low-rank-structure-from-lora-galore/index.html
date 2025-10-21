@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Application">
 <title>Mathematical Introduction to Low-Rank structure from LoRA &amp; Galore</title>
 
-<link rel='canonical' href='https://pyfile.github.io/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/'>
+<link rel='canonical' href='http://localhost:1313/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/'>
 
-<link rel="stylesheet" href="/scss/style.min.5cfab5ff0c93e124204c512cc95a3bdf8d950608f28d21af4ca499e625a311a0.css"><meta property='og:title' content="Mathematical Introduction to Low-Rank structure from LoRA & Galore">
+<link rel="stylesheet" href="/scss/style.min.260e2d7423d0fffeb60af1eeb125e1bd954318ce07793d06a76018be447179bb.css"><meta property='og:title' content="Mathematical Introduction to Low-Rank structure from LoRA & Galore">
 <meta property='og:description' content="Application">
-<meta property='og:url' content='https://pyfile.github.io/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/'>
+<meta property='og:url' content='http://localhost:1313/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/'>
 <meta property='og:site_name' content='KiKi&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='LoRA' /><meta property='article:tag' content='GaLore' /><meta property='article:tag' content='Low Rank' /><meta property='article:tag' content='Paper Reading' /><meta property='article:published_time' content='2025-01-29T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-01-29T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Mathematical Introduction to Low-Rank structure from LoRA & Galore">
-<meta name="twitter:description" content="Application">
-    <link rel="shortcut icon" href="/R-C.ico" />
-<style>
+<meta name="twitter:description" content="Application"><style>
     ::selection {
     color: #fff;
     background: #557697;
@@ -34,8 +32,6 @@
 	  --article-font-family: "LXGW WenKai GB", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Open Sans", "Noto Sans SC", "Noto Color Emoji", "Microsoft YaHei";
 	}
 </style>
-
-<head></head>
 
     </head>
     <body class="
@@ -63,7 +59,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -92,7 +88,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">KiKi&#39;s Blog</a></h1>
-            <h2 class="site-description">MD means More is Different</h2>
+            <h2 class="site-description"></h2>
         </div>
     </header><ol class="menu-social">
             
@@ -233,11 +229,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="https://pyfile.github.io/en/" >English</option>
+                                    <option value="http://localhost:1313/en/" >English</option>
                                 
-                                    <option value="https://pyfile.github.io/" selected>中文</option>
+                                    <option value="http://localhost:1313/" selected>中文</option>
                                 
-                                    <option value="https://pyfile.github.io/ar/" >عربي</option>
+                                    <option value="http://localhost:1313/ar/" >عربي</option>
                                 
                             </select>
                         </li>
@@ -270,55 +266,7 @@
     </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">目录</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#lora">LoRA</a>
-      <ol>
-        <li><a href="#背景简介">背景简介</a></li>
-        <li><a href="#理论方法">理论方法</a></li>
-        <li><a href="#应用实际的注意点">应用实际的注意点</a></li>
-      </ol>
-    </li>
-    <li><a href="#galore">GaLore</a>
-      <ol>
-        <li><a href="#背景简介-1">背景简介</a></li>
-        <li><a href="#理论方法-1">理论方法</a>
-          <ol>
-            <li><a href="#可逆网络的梯度形式">可逆网络的梯度形式</a></li>
-            <li><a href="#low-rank-gradient">Low Rank Gradient</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="main-article">
@@ -396,13 +344,12 @@
     <p><a class="link" href="http://arxiv.org/abs/2106.09685"  target="_blank" rel="noopener"
     >LoRA</a> &amp; <a class="link" href="http://arxiv.org/abs/2403.03507"  target="_blank" rel="noopener"
     >Galore</a></p>
-<h2 id="lora">LoRA
-</h2><h3 id="背景简介">背景简介
+<h2 id="1-lora">1. LoRA
+</h2><h3 id="11-背景简介">1.1 背景简介
 </h3><p>目前NLP领域常用的范式就是选择一个已经预训练好的LLM模型作为基座然后做微调来完成自己的任务，但是全参数的微调在目前参数量过大的LLM模型上过于昂贵了，LoRA就是面向这样一个问题而提出的高效微调方法。</p>
 <p>简单说来，LoRA基于这样一个事实</p>
 <blockquote>
-<p><em>the learned over-parametrized models in fact reside on a low intrinsic dimension</em></p>
-</blockquote>
+<p><em>the learned over-parametrized models in fact reside on a low intrinsic dimension</em></p></blockquote>
 <p><a class="link" href="http://arxiv.org/abs/1804.08838"  target="_blank" rel="noopener"
     >Measuring the Intrinsic Dimension of Objective Landscapes</a></p>
 <p><a class="link" href="http://arxiv.org/abs/2012.13255"  target="_blank" rel="noopener"
@@ -418,22 +365,20 @@
 	
 	
 ></p>
-<h3 id="理论方法">理论方法
+<h3 id="12-理论方法">1.2 理论方法
 </h3><p>原来的模型Dense层的参数
+</p>
 $$
 W\in \mathbb{R}^{d\times k}
-$$</p>
-<p>微调更新</p>
-<p>$$
-W_0+\Delta W=W_0+BA\text{, }B\in\mathbb{R}^{d\times r}\&amp;A\in\mathbb{R}^{r\times k}
-$$</p>
-<h3 id="应用实际的注意点">应用实际的注意点
+$$<p>微调更新</p>
+$$
+W_0+\Delta W=W_0+BA\text{, }B\in\mathbb{R}^{d\times r}\&A\in\mathbb{R}^{r\times k}
+$$<h3 id="13-应用实际的注意点">1.3 应用实际的注意点
 </h3><blockquote>
-<p>We leave the empirical investigation of adapting the MLP layers, LayerNorm layers, and biases to a future work.</p>
-</blockquote>
+<p>We leave the empirical investigation of adapting the MLP layers, LayerNorm layers, and biases to a future work.</p></blockquote>
 <p>LoRA本文工作作者只将这个方法应用到了Attension的权重部分，即$W_q,W_k,W_v,W_o$上，而不管其他的MLP等层。并且尽管Attension可能是有多头的，但是这个工作里将每种权重$W_q$等分别视作一整个矩阵。</p>
-<h2 id="galore">GaLore
-</h2><h3 id="背景简介-1">背景简介
+<h2 id="2-galore">2. GaLore
+</h2><h3 id="21-背景简介">2.1 背景简介
 </h3><p>这个方法是LoRA的延续/改进，同样是为了实现LLM的高效微调，LoRA有效果和全参数微调相比不够好的问题。同时，整体上GaLore的思路是继承了low rank structure的思想的。</p>
 <p><img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-7.2.png"
 	
@@ -445,10 +390,10 @@ $$</p>
 	
 	
 ></p>
-<h3 id="理论方法-1">理论方法
+<h3 id="22-理论方法">2.2 理论方法
 </h3><p>LoRA是认为over parametered LLM的参数矩阵是可以使用low rank矩阵来分解的，而Galore在LoRA的基础上更进了一步，它认为权重更新的梯度矩阵G是缓变的低秩结构。</p>
-<h4 id="可逆网络的梯度形式">可逆网络的梯度形式
-</h4><p>定义：可逆网络$\mathcal{N}(x):=\mathcal{N}_L(\mathcal{N}_{L-1}(&hellip;\mathcal{N}_1(x)))$，$J_l:= \text{Jacobian} (\mathcal{N}_L)&hellip; \text{Jacobian} (\mathcal{N}_{l+1})$，$f_l:=\mathcal{N}_l(&hellip;\mathcal{N}_1(x))$，第l层的权重矩阵为$W_l$有梯度$G_l$，batchsize为1。简化一点我们可以用下图说明：</p>
+<h4 id="221-可逆网络的梯度形式">2.2.1 可逆网络的梯度形式
+</h4><p>定义：可逆网络$\mathcal{N}(x):=\mathcal{N}\_L(\mathcal{N}\_{L-1}(...\mathcal{N}\_1(x)))$，$J_l:= \text{Jacobian} (\mathcal{N}\_L)... \text{Jacobian} (\mathcal{N}\_{l+1})$，$f_l:=\mathcal{N}_l(...\mathcal{N}_1(x))$，第l层的权重矩阵为$W_l$有梯度$G_l$，batchsize为1。简化一点我们可以用下图说明：</p>
 <p><img src="https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-7.3.png"
 	
 	
@@ -461,134 +406,155 @@ $$</p>
 ></p>
 <p>通常我们有数值回归任务和分类任务两类任务，他们的Loss function通常为$\frac{1}{2}(y-f_L)^2$和$-log(\frac{exp(z_{y_i})}{\sum^K_{i=1}exp(z_i)})$，更进一步
 当$\varphi=\frac{1}{2}(y-f_L)^2$，那么我们有
+</p>
 $$
 \begin{align*}
-G_l &amp;= \frac{\partial\varphi}{\partial W_l} \\
-&amp;= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\
-&amp;= -(y-f_L)\cdot J_l \cdot \frac{\partial f_l}{\partial W_l} \\
-&amp;= J^T_l\cdot -(y-f_L)\cdot \frac{\partial f_l}{\partial W_l}
+G_l &= \frac{\partial\varphi}{\partial W_l} \\\
+    &= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\\
+    &= -(y-f_L)\cdot J_l \cdot \frac{\partial f_l}{\partial W_l} \\\
+    &= J^T_l\cdot -(y-f_L)\cdot \frac{\partial f_l}{\partial W_l}
 \end{align*}
-$$
+$$<p>
 简单有
+</p>
 $$
 f_l = W_l \cdot f_{l-1}
-$$
+$$<p>
 所以
+</p>
 $$
 \frac{\partial f_l}{\partial W_l} = f^T_{l-1}
-$$
+$$<p>
 而我们可以认为$f_{l,0}=0$，所以
+</p>
 $$
 \begin{align*}
-f_L &amp;= \frac{\partial f_L}{\partial f_l}\cdot f_l \\
-&amp;= J_l \cdot W_lf_{l-1}
+f_L &= \frac{\partial f_L}{\partial f_l}\cdot f_l \\\
+    &= J_l \cdot W_lf_{l-1}
 \end{align*}
-$$
+$$<p>
 全部代入最初的结果可得
+</p>
 $$
 G_l=-J^T_l(y-J_lW_lf_{l-1})f^T_{l-1}
-$$
+$$<p>
 这与文中Appendix B.1的公式6形式一致，差一个符号或许可以解释为梯度下降再取一个负号</p>
 <p>而当$\varphi=-log(\frac{exp(y^Tf_L)}{\mathbf{1}^Texp(f_L)})$时，
 首先我们需要拿来一个投影矩阵$P_{\mathbf{1}}^{\perp}=I-\frac{1}{K}\mathbf{1}^T\mathbf{1}$，我们注意到这个投影矩阵是半正定的同时它本质上是把任意向量投影到$\mathbf{1}$向量的正交补空间，即经过投影后的向量一定与$\mathbf{1}$正交，这意味着投影后的向量一定是均值为0的（这个性质后面能用到）。接着我们利用这个投影矩阵定义新的$\hat{f}:=P_{\mathbf{1}}^{\perp}f$，从$P_{\mathbf{1}}^{\perp}$的形式我们可以知道$f=\hat{f}+c\mathbf{1}$，那么我们可以知道
+</p>
 $$
 \varphi=-ln(\frac{exp(c)exp(y^T\hat{f})}{exp(c)\mathbf{1}^Texp(\hat{f})})=-(y^T\hat{f}-ln(\mathbf{1}^Texp(\hat{f})))
-$$
+$$<p>
 接着对$exp(\hat{f})$进行泰勒展开，保留到二阶
+</p>
 $$
 \begin{align*}
-exp(\hat{f}) &amp;= \mathbf{1}^T(1+\hat{f}+\frac{1}{2}\hat{f}^T\hat{f}) \\
-&amp;= (K + 0 + \frac{1}{2}\hat{f}^T\hat{f}) \\
-&amp;= K(1+\frac{1}{2K}\hat{f}^T\hat{f})
+exp(\hat{f}) &= \mathbf{1}^T(1+\hat{f}+\frac{1}{2}\hat{f}^T\hat{f}) \\\
+             &= (K + 0 + \frac{1}{2}\hat{f}^T\hat{f}) \\\
+             &= K(1+\frac{1}{2K}\hat{f}^T\hat{f})
 \end{align*}
-$$
+$$<p>
 带入可得
+</p>
 $$
 \varphi = -(y^T\hat{f}-ln(1+\frac{1}{2K}\hat{f}^T\hat{f})-lnK)
-$$
+$$<p>
 那么
+</p>
 $$
 \begin{align*}
-G_l &amp;= \frac{\partial\varphi}{\partial W_l} \\
-&amp;= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\
-&amp;= J^T_l\frac{\partial\hat{f}_l}{\partial f_l}\frac{\partial\varphi}{\partial\hat{f}_l}\hat{f}^T_{l-1} \\
-&amp;= -J^T_lP^T_{\mathbf{1}}(y^T-\frac{\gamma}{K}\hat{f}_L)\hat{f}^T_{l-1} \\
-&amp;= -J^T_lP^T_{\mathbf{1}}(y^T-\frac{\gamma}{K}J_lW_lf_{l-1})\hat{f}^T_{l-1}
+G_l &= \frac{\partial\varphi}{\partial W_l} \\\
+    &= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\\
+    &= J^T\_l\frac{\partial\hat{f}\_l}{\partial f_l}\frac{\partial\varphi}{\partial\hat{f}\_l}\hat{f}^T\_{l-1} \\\
+    &= -J^T\_lP^T\_{\mathbf{1}}(y^T-\frac{\gamma}{K}\hat{f}\_L)\hat{f}^T\_{l-1} \\\
+    &= -J^T\_lP^T\_{\mathbf{1}}(y^T-\frac{\gamma}{K}J\_lW\_lf\_{l-1})\hat{f}^T\_{l-1}
 \end{align*}
-$$
+$$<p>
 其中$\gamma=(1+\frac{1}{2K}\hat{f}^T\hat{f})^{-1}$，并且在small logits下$||P^T_\mathbf{1}f_L||_{\infty}\ll\sqrt{K}$，那么$\gamma\thickapprox1$。
 同样， 这与文中Lemma B.2形式一致，相差一个负号应该是梯度下降取负号</p>
-<h4 id="low-rank-gradient">Low Rank Gradient
+<h4 id="222-low-rank-gradient">2.2.2 Low Rank Gradient
 </h4><p>经过上面的证明我们可以知道，可逆网络的梯度有这样的通用形式
+</p>
 $$
 G_l=A-BW_lC
+$$<p>
+我们假设采用SGD的更新形式$W_l^t=W^{t-1}\_l+\eta G^{t-1}\_l$代入，
+</p>
 $$
-我们假设采用SGD的更新形式$W_l^t=W^{t-1}_l+\eta G^{t-1}_l$代入，
-$$
-G^t_l=A-B(W^{t-1}_l+\eta G^{t-1}_l)C=G^{t-1}_l-\eta BG^{t-1}_lC
-$$
+G^t\_l=A-B(W^{t-1}\_l+\eta G^{t-1}\_l)C=G^{t-1}\_l-\eta BG^{t-1}\_lC
+$$<p>
 接着需要进行如下定义：$S:=C\otimes B$，$g_t:=vec(G_t)\in R^{mn}$是对$G_t\in R^{m\times n}$的向量化。接着，由$vec(BWC)=(C^T\otimes B)vec(W)$，我们可得
+</p>
 $$
 g_t = (I-\eta S)g_{t-1}
-$$
+$$<p>
 接着我们就开始尝试对$G_l$进行low rank approximation，paper里这部分数学过程里面的原理很多可以参考<a class="link" href="https://www.cs.ubc.ca/~nickhar/W12/Lecture15Notes.pdf"  target="_blank" rel="noopener"
     >UBC Lecture Note</a>
 首先我们需要stable rank
+</p>
 $$
-\text{stable-rank}(G_t):=\frac{||G_t||_F^2}{||G_t||^2_2}
+\text{stable-rank}(G_t):=\frac{||G_t||\_F^2}{||G_t||^2_2}
+$$<p>
+其中$||A||^2_F$叫做Frobenius norm，定义为$||A||^2_F:=tr(AA^T)=\sum_{i,j}A^2_{i,j}=\sum_i\sigma_i^2$。而另一个$||A||\_2$表示matrix 2-norm（矩阵2范数），也叫谱范数(spectral norm)，而矩阵的2范数就是对矩阵做SVD分解后得到的最大奇异值$\sigma_{max}$。因此A的stable rank满足
+</p>
 $$
-其中$||A||^2_F$叫做Frobenius norm，定义为$||A||^2_F:=tr(AA^T)=\sum_{i,j}A^2_{i,j}=\sum_i\sigma_i^2$。而另一个$||A||_2$表示matrix 2-norm（矩阵2范数），也叫谱范数(spectral norm)，而矩阵的2范数就是对矩阵做SVD分解后得到的最大奇异值$\sigma_{max}$。因此A的stable rank满足
-$$
-\frac{||A||^2_F}{||A||^2}=\frac{\sum_i\sigma_i^2}{max_i\sigma_i^2}
-$$
+\frac{||A||^2\_F}{||A||^2}=\frac{\sum\_i\sigma\_i^2}{max\_i\sigma_i^2}
+$$<p>
 从这我们可以看出stable rank相比rank，虽不能表示所有的正奇异值个数，但可近似掉较小的奇异值。
+</p>
 $$
 \begin{align*}
-||G_t||^2_F &amp;= ||g_t||^2_F=||(I-\eta S)^tg_0||^2_F=||(I-\eta S)^tg_0^{\parallel}||^2_F+||(I-\eta S)^tg_0^{\perp}||^2_F \\
-&amp;\leq (1-\eta\lambda_2)^{2t}||g_0^{\perp}||^2_F+(1-\eta\lambda_1)^{2t}||g_0^{\parallel}||^2_F
+||G_t||^2_F &= ||g_t||^2_F=||(I-\eta S)^tg_0||^2_F=||(I-\eta S)^tg_0^{\parallel}||^2_F+||(I-\eta S)^tg_0^{\perp}||^2_F \\\
+            &\leq (1-\eta\lambda_2)^{2t}||g_0^{\perp}||^2_F+(1-\eta\lambda_1)^{2t}||g_0^{\parallel}||^2_F
 \end{align*}
-$$
-其中$\lambda_1&lt;\lambda_2$是S最小的两个特征向量，$\lambda_1$是最小的特征值，简并度为$\kappa_1$。$g_0^{\parallel}$是$lambda_1$对应的本征子空间$\nu_1$，我们将$g_0$分解为$g_0=g_0^{\parallel}+g_0^{\perp}$。</p>
+$$<p>
+其中$\lambda_1<\lambda_2$是S最小的两个特征向量，$\lambda_1$是最小的特征值，简并度为$\kappa_1$。$g_0^{\parallel}$是$lambda_1$对应的本征子空间$\nu_1$，我们将$g_0$分解为$g_0=g_0^{\parallel}+g_0^{\perp}$。</p>
 <p>而从另一个角度出发，根据我们对gradient的低秩假设，设$G_0^{\parallel}$有rank $L$，对其做SVD：
+</p>
 $$
-G_0^{\parallel}=\sum_{l=1}^Lc_l z_l y^T_l
-$$
+G\_0^{\parallel}=\sum\_{l=1}^Lc\_l z\_l y^T\_l
+$$<p>
 $c_l$为奇异值，$z_l,y_l$为正交单位向量，那么
+</p>
 $$
-g^{\parallel}_0=vec(G_0^{\parallel})=\sum_{l=1}^Lc_l(y_l\otimes z_l)=\sum_{l=1}^Lc_lv_l，v_l\in\nu_1
-$$
-这样我们就可以注意到这个本征子空间是完全正交对角化的，进而我们就以此注意到$||g_0^{\parallel}||^2_2=||g_0^{\parallel}||^2_F=||G_0^{\parallel}||^2_F$。</p>
+g^{\parallel}\_0=vec(G\_0^{\parallel})=\sum\_{l=1}^Lc\_l(y\_l\otimes z\_l)=\sum\_{l=1}^Lc\_lv\_l，v\_l\in\nu\_1
+$$<p>
+这样我们就可以注意到这个本征子空间是完全正交对角化的，进而我们就以此注意到$||g\_0^{\parallel}||^2\_2=||g\_0^{\parallel}||^2\_F=||G\_0^{\parallel}||^2\_F$。</p>
 <p>这样的话，整合上述知识，首先从matrix 2-norm的定义和前述的$g_t=vec(G_t)$的表达式出发
+</p>
 $$
 \begin{align*}
-||G_t||_2 &amp;= max\text{ }z^TG_ty \\
-&amp;= max (y\otimes z)^Tg_t \\
-&amp;= max (y\otimes z)^T(I-\eta S)^tg_0 \\
-&amp;\geq (1-\eta \lambda_1)^tmax_l v_l^Tg_0
+||G_t||_2 &= max\text{ }z^TG_ty \\\
+          &= max (y\otimes z)^Tg_t \\\
+          &= max (y\otimes z)^T(I-\eta S)^tg_0 \\\
+          &\geq (1-\eta \lambda_1)^tmax_l v_l^Tg_0
 \end{align*}
-$$
+$$<p>
 由于$v_l$对应于最小本征值$\lambda_1$的本征子空间$\nu_1$的单位向量，那么$v_l^Tg_0$可以看作$G_0$向$\nu_1$的投影相关，那么再由matrix 2-norm的定义可以发现，$max(v_l^Tg_0)=||G^{\parallel}_0||_2$。
 最终，我们对$sr(G_t)$的分式中的分子取上界，分母取下界就可以得到最后
+</p>
 $$
 sr(G_t)\leq sr(G_0^{\parallel})+(\frac{1-\eta \lambda_2}{1-\eta \lambda_1})^{2t}\frac{||G_0^{\perp}||^2_F}{||G^{\parallel}_0||_2}
-$$</p>
-<p>这样我们就得到了$\text{stable-rank}(G_t)$的上界形式，更进一步的让我们回到梯度$G_t$本身
+$$<p>这样我们就得到了$\text{stable-rank}(G_t)$的上界形式，更进一步的让我们回到梯度$G_t$本身
+</p>
 $$
 G^l_t = A-BW^lC = (a - BW^lf_l)f_l^T
-$$
-如果$B$是满秩的，而$\text{rank}(f)=N&rsquo;&lt;n$，</p>
-<p>那么一方面，我们知道$C=ff^T\in \mathbb{R}^{n\times n}$，由于$\text{rank}({f}^N)&lt;n$，那么我们令${u}^{n-N}$作为$\mathbb{R}^n$中$f^N$所张成的空间的补空间的正交基底，同时令${e}^m$作为$\mathbb{R}^m$的任意正交基底，那么显然${u\otimes e}$即可以作为最小本征值0的最小本征空间$\nu_1$的基底，那么我们把$G_{t_0}$投影到$\nu_1$上即是
+$$<p>
+如果$B$是满秩的，而$\text{rank}(f)=N' < n$，</p>
+<p>那么一方面，我们知道$C=ff^T\in \mathbb{R}^{n\times n}$，由于$\text{rank}(\{f\}^N) < n$，那么我们令$\{u\}^{n-N}$作为$\mathbb{R}^n$中$f^N$所张成的空间的补空间的正交基底，同时令$\{e\}^m$作为$\mathbb{R}^m$的任意正交基底，那么显然$\{u\otimes e\}$即可以作为最小本征值0的最小本征空间$\nu_1$的基底，那么我们把$G_{t_0}$投影到$\nu_1$上即是
+</p>
 $$
 G_{t_0}^{\parallel}=\sum_{j=1}^{n-N}\sum_{k=1}^{m}c_{jk}u_je_k^T=\sum_{j=1}^{n-N}u_j\sum_{k=1}^{m}(c_{jk}e_k)^T
-$$
-我们知道$\text{stable-rank}(G^{\parallel}_{t_0})\leq\text{rank}(G^{\parallel}_{t_0})$（可参考<a class="link" href="http://arxiv.org/abs/2407.21594"  target="_blank" rel="noopener"
+$$<p>
+我们知道$\text{stable-rank}(G^{\parallel}\_{t_0})\leq\text{rank}(G^{\parallel}\_{t_0})$（可参考<a class="link" href="http://arxiv.org/abs/2407.21594"  target="_blank" rel="noopener"
     >Stable Rank and Intrinsic Dimension of Real and Complex Matrices</a>中2.1）,而根据前式情况我们可知$\text{rank}(G^{\parallel}_{t_0})\leq(n-N)$。</p>
 <p>同时另一方面，$f^N$可以被分解为N个rank为1的矩阵之和，即$f=\sum_{j=1}^Nb_jf_j$，那么
+</p>
 $$
 G_t=(a-BWf)f^T=(a-BWf)(\sum_{j=1}^Nb_jf_j)^T=\sum_{j=1}^Nb_j(a-BWf)f_j^T
-$$
+$$<p>
 那么显然我们可知$\text{rank}(G)\leq N$。</p>
-<p>所以综上因为$N&lt;n$，我们可知$\text{sr}(G_t)\leq min(n-N,N)\leq n/2$</p>
+<p>所以综上因为$N < n$，我们可知$\text{sr}(G_t)\leq min(n-N,N)\leq n/2$</p>
 <p>终于，大功告成，我们由此可知作为梯度$G_t$的rank的近似stable-rank是不高于n/2的，有着显著的low rank特性。</p>
 
 </section>
@@ -609,18 +575,6 @@ $$
     </section>
 
 
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
     </footer>
 
 
@@ -660,55 +614,11 @@ $$
      
     
         
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">
     <section class="copyright">
         &copy; 
-        
-            2020 - 
         
         2025 KiKi&#39;s Blog
     </section>
@@ -804,7 +714,7 @@ $$
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.d4420f723864127b8d29a1f46195dd9f1a648b887d47b27e22d4be6d4cf7c432.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
@@ -823,3 +733,12 @@ $$
 
     </body>
 </html>
+
+<head>
+  ...
+  
+    
+  
+  ...
+</head>
+

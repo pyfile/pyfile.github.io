@@ -2,33 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on KiKi&#39;s Blog</title>
-        <link>https://pyfile.github.io/categories/</link>
+        <link>http://localhost:1313/categories/</link>
         <description>Recent content in Categories on KiKi&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 29 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://pyfile.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Application</title>
-        <link>https://pyfile.github.io/categories/application/</link>
-        <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
+        <lastBuildDate>Tue, 13 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Paper Reading</title>
+        <link>http://localhost:1313/categories/paper-reading/</link>
+        <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/categories/application/</guid>
-        <description>&lt;img src="https://pyfile.github.io/categories/application/applying-online.jpg" alt="Featured image of post Application" /&gt;</description>
+        <guid>http://localhost:1313/categories/paper-reading/</guid>
+        <description>&lt;img src="http://localhost:1313/categories/paper-reading/v2-3bc30d2685bcaa331904a71a678e8a11_1440w.jpg" alt="Featured image of post Paper Reading" /&gt;</description>
         </item>
         <item>
-        <title>Paper Reading</title>
-        <link>https://pyfile.github.io/categories/paper-reading/</link>
-        <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
+        <title>Application</title>
+        <link>http://localhost:1313/categories/application/</link>
+        <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/categories/paper-reading/</guid>
-        <description>&lt;img src="https://pyfile.github.io/categories/paper-reading/v2-3bc30d2685bcaa331904a71a678e8a11_1440w.jpg" alt="Featured image of post Paper Reading" /&gt;</description>
+        <guid>http://localhost:1313/categories/application/</guid>
+        <description>&lt;img src="http://localhost:1313/categories/application/applying-online.jpg" alt="Featured image of post Application" /&gt;</description>
         </item>
         <item>
         <title>Test</title>
-        <link>https://pyfile.github.io/categories/test/</link>
+        <link>http://localhost:1313/categories/test/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/categories/test/</guid>
-        <description>&lt;img src="https://pyfile.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
+        <guid>http://localhost:1313/categories/test/</guid>
+        <description>&lt;img src="http://localhost:1313/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
         </item>
         
     </channel>

@@ -2,26 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Paper Reading on KiKi&#39;s Blog</title>
-        <link>https://pyfile.github.io/tags/paper-reading/</link>
+        <link>http://localhost:1313/tags/paper-reading/</link>
         <description>Recent content in Paper Reading on KiKi&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 29 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://pyfile.github.io/tags/paper-reading/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 29 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/paper-reading/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Mathematical Introduction to Low-Rank structure from LoRA &amp; Galore</title>
-        <link>https://pyfile.github.io/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/</link>
+        <link>http://localhost:1313/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/</link>
         <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/</guid>
+        <guid>http://localhost:1313/p/mathematical-introduction-to-low-rank-structure-from-lora-galore/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2106.09685&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;LoRA&lt;/a&gt; &amp;amp; &lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2403.03507&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Galore&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;lora&#34;&gt;LoRA
-&lt;/h2&gt;&lt;h3 id=&#34;背景简介&#34;&gt;背景简介
+&lt;h2 id=&#34;1-lora&#34;&gt;1. LoRA
+&lt;/h2&gt;&lt;h3 id=&#34;11-背景简介&#34;&gt;1.1 背景简介
 &lt;/h3&gt;&lt;p&gt;目前NLP领域常用的范式就是选择一个已经预训练好的LLM模型作为基座然后做微调来完成自己的任务，但是全参数的微调在目前参数量过大的LLM模型上过于昂贵了，LoRA就是面向这样一个问题而提出的高效微调方法。&lt;/p&gt;
 &lt;p&gt;简单说来，LoRA基于这样一个事实&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;the learned over-parametrized models in fact reside on a low intrinsic dimension&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;the learned over-parametrized models in fact reside on a low intrinsic dimension&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/1804.08838&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Measuring the Intrinsic Dimension of Objective Landscapes&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2012.13255&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -37,22 +36,20 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;理论方法&#34;&gt;理论方法
+&lt;h3 id=&#34;12-理论方法&#34;&gt;1.2 理论方法
 &lt;/h3&gt;&lt;p&gt;原来的模型Dense层的参数
+&lt;/p&gt;
 $$
 W\in \mathbb{R}^{d\times k}
-$$&lt;/p&gt;
-&lt;p&gt;微调更新&lt;/p&gt;
-&lt;p&gt;$$
-W_0+\Delta W=W_0+BA\text{, }B\in\mathbb{R}^{d\times r}\&amp;amp;A\in\mathbb{R}^{r\times k}
-$$&lt;/p&gt;
-&lt;h3 id=&#34;应用实际的注意点&#34;&gt;应用实际的注意点
+$$&lt;p&gt;微调更新&lt;/p&gt;
+$$
+W_0+\Delta W=W_0+BA\text{, }B\in\mathbb{R}^{d\times r}\&amp;A\in\mathbb{R}^{r\times k}
+$$&lt;h3 id=&#34;13-应用实际的注意点&#34;&gt;1.3 应用实际的注意点
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;We leave the empirical investigation of adapting the MLP layers, LayerNorm layers, and biases to a future work.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;We leave the empirical investigation of adapting the MLP layers, LayerNorm layers, and biases to a future work.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;LoRA本文工作作者只将这个方法应用到了Attension的权重部分，即$W_q,W_k,W_v,W_o$上，而不管其他的MLP等层。并且尽管Attension可能是有多头的，但是这个工作里将每种权重$W_q$等分别视作一整个矩阵。&lt;/p&gt;
-&lt;h2 id=&#34;galore&#34;&gt;GaLore
-&lt;/h2&gt;&lt;h3 id=&#34;背景简介-1&#34;&gt;背景简介
+&lt;h2 id=&#34;2-galore&#34;&gt;2. GaLore
+&lt;/h2&gt;&lt;h3 id=&#34;21-背景简介&#34;&gt;2.1 背景简介
 &lt;/h3&gt;&lt;p&gt;这个方法是LoRA的延续/改进，同样是为了实现LLM的高效微调，LoRA有效果和全参数微调相比不够好的问题。同时，整体上GaLore的思路是继承了low rank structure的思想的。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-7.2.png&#34;
 	
@@ -64,10 +61,10 @@ $$&lt;/p&gt;
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;理论方法-1&#34;&gt;理论方法
+&lt;h3 id=&#34;22-理论方法&#34;&gt;2.2 理论方法
 &lt;/h3&gt;&lt;p&gt;LoRA是认为over parametered LLM的参数矩阵是可以使用low rank矩阵来分解的，而Galore在LoRA的基础上更进了一步，它认为权重更新的梯度矩阵G是缓变的低秩结构。&lt;/p&gt;
-&lt;h4 id=&#34;可逆网络的梯度形式&#34;&gt;可逆网络的梯度形式
-&lt;/h4&gt;&lt;p&gt;定义：可逆网络$\mathcal{N}(x):=\mathcal{N}_L(\mathcal{N}_{L-1}(&amp;hellip;\mathcal{N}_1(x)))$，$J_l:= \text{Jacobian} (\mathcal{N}_L)&amp;hellip; \text{Jacobian} (\mathcal{N}_{l+1})$，$f_l:=\mathcal{N}_l(&amp;hellip;\mathcal{N}_1(x))$，第l层的权重矩阵为$W_l$有梯度$G_l$，batchsize为1。简化一点我们可以用下图说明：&lt;/p&gt;
+&lt;h4 id=&#34;221-可逆网络的梯度形式&#34;&gt;2.2.1 可逆网络的梯度形式
+&lt;/h4&gt;&lt;p&gt;定义：可逆网络$\mathcal{N}(x):=\mathcal{N}\_L(\mathcal{N}\_{L-1}(...\mathcal{N}\_1(x)))$，$J_l:= \text{Jacobian} (\mathcal{N}\_L)... \text{Jacobian} (\mathcal{N}\_{l+1})$，$f_l:=\mathcal{N}_l(...\mathcal{N}_1(x))$，第l层的权重矩阵为$W_l$有梯度$G_l$，batchsize为1。简化一点我们可以用下图说明：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-7.3.png&#34;
 	
 	
@@ -80,143 +77,164 @@ $$&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;通常我们有数值回归任务和分类任务两类任务，他们的Loss function通常为$\frac{1}{2}(y-f_L)^2$和$-log(\frac{exp(z_{y_i})}{\sum^K_{i=1}exp(z_i)})$，更进一步
 当$\varphi=\frac{1}{2}(y-f_L)^2$，那么我们有
+&lt;/p&gt;
 $$
 \begin{align*}
-G_l &amp;amp;= \frac{\partial\varphi}{\partial W_l} \\
-&amp;amp;= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\
-&amp;amp;= -(y-f_L)\cdot J_l \cdot \frac{\partial f_l}{\partial W_l} \\
-&amp;amp;= J^T_l\cdot -(y-f_L)\cdot \frac{\partial f_l}{\partial W_l}
+G_l &amp;= \frac{\partial\varphi}{\partial W_l} \\\
+    &amp;= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\\
+    &amp;= -(y-f_L)\cdot J_l \cdot \frac{\partial f_l}{\partial W_l} \\\
+    &amp;= J^T_l\cdot -(y-f_L)\cdot \frac{\partial f_l}{\partial W_l}
 \end{align*}
-$$
+$$&lt;p&gt;
 简单有
+&lt;/p&gt;
 $$
 f_l = W_l \cdot f_{l-1}
-$$
+$$&lt;p&gt;
 所以
+&lt;/p&gt;
 $$
 \frac{\partial f_l}{\partial W_l} = f^T_{l-1}
-$$
+$$&lt;p&gt;
 而我们可以认为$f_{l,0}=0$，所以
+&lt;/p&gt;
 $$
 \begin{align*}
-f_L &amp;amp;= \frac{\partial f_L}{\partial f_l}\cdot f_l \\
-&amp;amp;= J_l \cdot W_lf_{l-1}
+f_L &amp;= \frac{\partial f_L}{\partial f_l}\cdot f_l \\\
+    &amp;= J_l \cdot W_lf_{l-1}
 \end{align*}
-$$
+$$&lt;p&gt;
 全部代入最初的结果可得
+&lt;/p&gt;
 $$
 G_l=-J^T_l(y-J_lW_lf_{l-1})f^T_{l-1}
-$$
+$$&lt;p&gt;
 这与文中Appendix B.1的公式6形式一致，差一个符号或许可以解释为梯度下降再取一个负号&lt;/p&gt;
 &lt;p&gt;而当$\varphi=-log(\frac{exp(y^Tf_L)}{\mathbf{1}^Texp(f_L)})$时，
 首先我们需要拿来一个投影矩阵$P_{\mathbf{1}}^{\perp}=I-\frac{1}{K}\mathbf{1}^T\mathbf{1}$，我们注意到这个投影矩阵是半正定的同时它本质上是把任意向量投影到$\mathbf{1}$向量的正交补空间，即经过投影后的向量一定与$\mathbf{1}$正交，这意味着投影后的向量一定是均值为0的（这个性质后面能用到）。接着我们利用这个投影矩阵定义新的$\hat{f}:=P_{\mathbf{1}}^{\perp}f$，从$P_{\mathbf{1}}^{\perp}$的形式我们可以知道$f=\hat{f}+c\mathbf{1}$，那么我们可以知道
+&lt;/p&gt;
 $$
 \varphi=-ln(\frac{exp(c)exp(y^T\hat{f})}{exp(c)\mathbf{1}^Texp(\hat{f})})=-(y^T\hat{f}-ln(\mathbf{1}^Texp(\hat{f})))
-$$
+$$&lt;p&gt;
 接着对$exp(\hat{f})$进行泰勒展开，保留到二阶
+&lt;/p&gt;
 $$
 \begin{align*}
-exp(\hat{f}) &amp;amp;= \mathbf{1}^T(1+\hat{f}+\frac{1}{2}\hat{f}^T\hat{f}) \\
-&amp;amp;= (K + 0 + \frac{1}{2}\hat{f}^T\hat{f}) \\
-&amp;amp;= K(1+\frac{1}{2K}\hat{f}^T\hat{f})
+exp(\hat{f}) &amp;= \mathbf{1}^T(1+\hat{f}+\frac{1}{2}\hat{f}^T\hat{f}) \\\
+             &amp;= (K + 0 + \frac{1}{2}\hat{f}^T\hat{f}) \\\
+             &amp;= K(1+\frac{1}{2K}\hat{f}^T\hat{f})
 \end{align*}
-$$
+$$&lt;p&gt;
 带入可得
+&lt;/p&gt;
 $$
 \varphi = -(y^T\hat{f}-ln(1+\frac{1}{2K}\hat{f}^T\hat{f})-lnK)
-$$
+$$&lt;p&gt;
 那么
+&lt;/p&gt;
 $$
 \begin{align*}
-G_l &amp;amp;= \frac{\partial\varphi}{\partial W_l} \\
-&amp;amp;= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\
-&amp;amp;= J^T_l\frac{\partial\hat{f}_l}{\partial f_l}\frac{\partial\varphi}{\partial\hat{f}_l}\hat{f}^T_{l-1} \\
-&amp;amp;= -J^T_lP^T_{\mathbf{1}}(y^T-\frac{\gamma}{K}\hat{f}_L)\hat{f}^T_{l-1} \\
-&amp;amp;= -J^T_lP^T_{\mathbf{1}}(y^T-\frac{\gamma}{K}J_lW_lf_{l-1})\hat{f}^T_{l-1}
+G_l &amp;= \frac{\partial\varphi}{\partial W_l} \\\
+    &amp;= \frac{\partial\varphi}{\partial f_L}\frac{\partial f_L}{\partial W_l} \\\
+    &amp;= J^T\_l\frac{\partial\hat{f}\_l}{\partial f_l}\frac{\partial\varphi}{\partial\hat{f}\_l}\hat{f}^T\_{l-1} \\\
+    &amp;= -J^T\_lP^T\_{\mathbf{1}}(y^T-\frac{\gamma}{K}\hat{f}\_L)\hat{f}^T\_{l-1} \\\
+    &amp;= -J^T\_lP^T\_{\mathbf{1}}(y^T-\frac{\gamma}{K}J\_lW\_lf\_{l-1})\hat{f}^T\_{l-1}
 \end{align*}
-$$
+$$&lt;p&gt;
 其中$\gamma=(1+\frac{1}{2K}\hat{f}^T\hat{f})^{-1}$，并且在small logits下$||P^T_\mathbf{1}f_L||_{\infty}\ll\sqrt{K}$，那么$\gamma\thickapprox1$。
 同样， 这与文中Lemma B.2形式一致，相差一个负号应该是梯度下降取负号&lt;/p&gt;
-&lt;h4 id=&#34;low-rank-gradient&#34;&gt;Low Rank Gradient
+&lt;h4 id=&#34;222-low-rank-gradient&#34;&gt;2.2.2 Low Rank Gradient
 &lt;/h4&gt;&lt;p&gt;经过上面的证明我们可以知道，可逆网络的梯度有这样的通用形式
+&lt;/p&gt;
 $$
 G_l=A-BW_lC
+$$&lt;p&gt;
+我们假设采用SGD的更新形式$W_l^t=W^{t-1}\_l+\eta G^{t-1}\_l$代入，
+&lt;/p&gt;
 $$
-我们假设采用SGD的更新形式$W_l^t=W^{t-1}_l+\eta G^{t-1}_l$代入，
-$$
-G^t_l=A-B(W^{t-1}_l+\eta G^{t-1}_l)C=G^{t-1}_l-\eta BG^{t-1}_lC
-$$
+G^t\_l=A-B(W^{t-1}\_l+\eta G^{t-1}\_l)C=G^{t-1}\_l-\eta BG^{t-1}\_lC
+$$&lt;p&gt;
 接着需要进行如下定义：$S:=C\otimes B$，$g_t:=vec(G_t)\in R^{mn}$是对$G_t\in R^{m\times n}$的向量化。接着，由$vec(BWC)=(C^T\otimes B)vec(W)$，我们可得
+&lt;/p&gt;
 $$
 g_t = (I-\eta S)g_{t-1}
-$$
+$$&lt;p&gt;
 接着我们就开始尝试对$G_l$进行low rank approximation，paper里这部分数学过程里面的原理很多可以参考&lt;a class=&#34;link&#34; href=&#34;https://www.cs.ubc.ca/~nickhar/W12/Lecture15Notes.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;UBC Lecture Note&lt;/a&gt;
 首先我们需要stable rank
+&lt;/p&gt;
 $$
-\text{stable-rank}(G_t):=\frac{||G_t||_F^2}{||G_t||^2_2}
+\text{stable-rank}(G_t):=\frac{||G_t||\_F^2}{||G_t||^2_2}
+$$&lt;p&gt;
+其中$||A||^2_F$叫做Frobenius norm，定义为$||A||^2_F:=tr(AA^T)=\sum_{i,j}A^2_{i,j}=\sum_i\sigma_i^2$。而另一个$||A||\_2$表示matrix 2-norm（矩阵2范数），也叫谱范数(spectral norm)，而矩阵的2范数就是对矩阵做SVD分解后得到的最大奇异值$\sigma_{max}$。因此A的stable rank满足
+&lt;/p&gt;
 $$
-其中$||A||^2_F$叫做Frobenius norm，定义为$||A||^2_F:=tr(AA^T)=\sum_{i,j}A^2_{i,j}=\sum_i\sigma_i^2$。而另一个$||A||_2$表示matrix 2-norm（矩阵2范数），也叫谱范数(spectral norm)，而矩阵的2范数就是对矩阵做SVD分解后得到的最大奇异值$\sigma_{max}$。因此A的stable rank满足
-$$
-\frac{||A||^2_F}{||A||^2}=\frac{\sum_i\sigma_i^2}{max_i\sigma_i^2}
-$$
+\frac{||A||^2\_F}{||A||^2}=\frac{\sum\_i\sigma\_i^2}{max\_i\sigma_i^2}
+$$&lt;p&gt;
 从这我们可以看出stable rank相比rank，虽不能表示所有的正奇异值个数，但可近似掉较小的奇异值。
+&lt;/p&gt;
 $$
 \begin{align*}
-||G_t||^2_F &amp;amp;= ||g_t||^2_F=||(I-\eta S)^tg_0||^2_F=||(I-\eta S)^tg_0^{\parallel}||^2_F+||(I-\eta S)^tg_0^{\perp}||^2_F \\
-&amp;amp;\leq (1-\eta\lambda_2)^{2t}||g_0^{\perp}||^2_F+(1-\eta\lambda_1)^{2t}||g_0^{\parallel}||^2_F
+||G_t||^2_F &amp;= ||g_t||^2_F=||(I-\eta S)^tg_0||^2_F=||(I-\eta S)^tg_0^{\parallel}||^2_F+||(I-\eta S)^tg_0^{\perp}||^2_F \\\
+            &amp;\leq (1-\eta\lambda_2)^{2t}||g_0^{\perp}||^2_F+(1-\eta\lambda_1)^{2t}||g_0^{\parallel}||^2_F
 \end{align*}
-$$
-其中$\lambda_1&amp;lt;\lambda_2$是S最小的两个特征向量，$\lambda_1$是最小的特征值，简并度为$\kappa_1$。$g_0^{\parallel}$是$lambda_1$对应的本征子空间$\nu_1$，我们将$g_0$分解为$g_0=g_0^{\parallel}+g_0^{\perp}$。&lt;/p&gt;
+$$&lt;p&gt;
+其中$\lambda_1&lt;\lambda_2$是S最小的两个特征向量，$\lambda_1$是最小的特征值，简并度为$\kappa_1$。$g_0^{\parallel}$是$lambda_1$对应的本征子空间$\nu_1$，我们将$g_0$分解为$g_0=g_0^{\parallel}+g_0^{\perp}$。&lt;/p&gt;
 &lt;p&gt;而从另一个角度出发，根据我们对gradient的低秩假设，设$G_0^{\parallel}$有rank $L$，对其做SVD：
+&lt;/p&gt;
 $$
-G_0^{\parallel}=\sum_{l=1}^Lc_l z_l y^T_l
-$$
+G\_0^{\parallel}=\sum\_{l=1}^Lc\_l z\_l y^T\_l
+$$&lt;p&gt;
 $c_l$为奇异值，$z_l,y_l$为正交单位向量，那么
+&lt;/p&gt;
 $$
-g^{\parallel}_0=vec(G_0^{\parallel})=\sum_{l=1}^Lc_l(y_l\otimes z_l)=\sum_{l=1}^Lc_lv_l，v_l\in\nu_1
-$$
-这样我们就可以注意到这个本征子空间是完全正交对角化的，进而我们就以此注意到$||g_0^{\parallel}||^2_2=||g_0^{\parallel}||^2_F=||G_0^{\parallel}||^2_F$。&lt;/p&gt;
+g^{\parallel}\_0=vec(G\_0^{\parallel})=\sum\_{l=1}^Lc\_l(y\_l\otimes z\_l)=\sum\_{l=1}^Lc\_lv\_l，v\_l\in\nu\_1
+$$&lt;p&gt;
+这样我们就可以注意到这个本征子空间是完全正交对角化的，进而我们就以此注意到$||g\_0^{\parallel}||^2\_2=||g\_0^{\parallel}||^2\_F=||G\_0^{\parallel}||^2\_F$。&lt;/p&gt;
 &lt;p&gt;这样的话，整合上述知识，首先从matrix 2-norm的定义和前述的$g_t=vec(G_t)$的表达式出发
+&lt;/p&gt;
 $$
 \begin{align*}
-||G_t||_2 &amp;amp;= max\text{ }z^TG_ty \\
-&amp;amp;= max (y\otimes z)^Tg_t \\
-&amp;amp;= max (y\otimes z)^T(I-\eta S)^tg_0 \\
-&amp;amp;\geq (1-\eta \lambda_1)^tmax_l v_l^Tg_0
+||G_t||_2 &amp;= max\text{ }z^TG_ty \\\
+          &amp;= max (y\otimes z)^Tg_t \\\
+          &amp;= max (y\otimes z)^T(I-\eta S)^tg_0 \\\
+          &amp;\geq (1-\eta \lambda_1)^tmax_l v_l^Tg_0
 \end{align*}
-$$
+$$&lt;p&gt;
 由于$v_l$对应于最小本征值$\lambda_1$的本征子空间$\nu_1$的单位向量，那么$v_l^Tg_0$可以看作$G_0$向$\nu_1$的投影相关，那么再由matrix 2-norm的定义可以发现，$max(v_l^Tg_0)=||G^{\parallel}_0||_2$。
 最终，我们对$sr(G_t)$的分式中的分子取上界，分母取下界就可以得到最后
+&lt;/p&gt;
 $$
 sr(G_t)\leq sr(G_0^{\parallel})+(\frac{1-\eta \lambda_2}{1-\eta \lambda_1})^{2t}\frac{||G_0^{\perp}||^2_F}{||G^{\parallel}_0||_2}
-$$&lt;/p&gt;
-&lt;p&gt;这样我们就得到了$\text{stable-rank}(G_t)$的上界形式，更进一步的让我们回到梯度$G_t$本身
+$$&lt;p&gt;这样我们就得到了$\text{stable-rank}(G_t)$的上界形式，更进一步的让我们回到梯度$G_t$本身
+&lt;/p&gt;
 $$
 G^l_t = A-BW^lC = (a - BW^lf_l)f_l^T
-$$
-如果$B$是满秩的，而$\text{rank}(f)=N&amp;rsquo;&amp;lt;n$，&lt;/p&gt;
-&lt;p&gt;那么一方面，我们知道$C=ff^T\in \mathbb{R}^{n\times n}$，由于$\text{rank}({f}^N)&amp;lt;n$，那么我们令${u}^{n-N}$作为$\mathbb{R}^n$中$f^N$所张成的空间的补空间的正交基底，同时令${e}^m$作为$\mathbb{R}^m$的任意正交基底，那么显然${u\otimes e}$即可以作为最小本征值0的最小本征空间$\nu_1$的基底，那么我们把$G_{t_0}$投影到$\nu_1$上即是
+$$&lt;p&gt;
+如果$B$是满秩的，而$\text{rank}(f)=N&#39; &lt; n$，&lt;/p&gt;
+&lt;p&gt;那么一方面，我们知道$C=ff^T\in \mathbb{R}^{n\times n}$，由于$\text{rank}(\{f\}^N) &lt; n$，那么我们令$\{u\}^{n-N}$作为$\mathbb{R}^n$中$f^N$所张成的空间的补空间的正交基底，同时令$\{e\}^m$作为$\mathbb{R}^m$的任意正交基底，那么显然$\{u\otimes e\}$即可以作为最小本征值0的最小本征空间$\nu_1$的基底，那么我们把$G_{t_0}$投影到$\nu_1$上即是
+&lt;/p&gt;
 $$
 G_{t_0}^{\parallel}=\sum_{j=1}^{n-N}\sum_{k=1}^{m}c_{jk}u_je_k^T=\sum_{j=1}^{n-N}u_j\sum_{k=1}^{m}(c_{jk}e_k)^T
-$$
-我们知道$\text{stable-rank}(G^{\parallel}_{t_0})\leq\text{rank}(G^{\parallel}_{t_0})$（可参考&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2407.21594&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+$$&lt;p&gt;
+我们知道$\text{stable-rank}(G^{\parallel}\_{t_0})\leq\text{rank}(G^{\parallel}\_{t_0})$（可参考&lt;a class=&#34;link&#34; href=&#34;http://arxiv.org/abs/2407.21594&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Stable Rank and Intrinsic Dimension of Real and Complex Matrices&lt;/a&gt;中2.1）,而根据前式情况我们可知$\text{rank}(G^{\parallel}_{t_0})\leq(n-N)$。&lt;/p&gt;
 &lt;p&gt;同时另一方面，$f^N$可以被分解为N个rank为1的矩阵之和，即$f=\sum_{j=1}^Nb_jf_j$，那么
+&lt;/p&gt;
 $$
 G_t=(a-BWf)f^T=(a-BWf)(\sum_{j=1}^Nb_jf_j)^T=\sum_{j=1}^Nb_j(a-BWf)f_j^T
-$$
+$$&lt;p&gt;
 那么显然我们可知$\text{rank}(G)\leq N$。&lt;/p&gt;
-&lt;p&gt;所以综上因为$N&amp;lt;n$，我们可知$\text{sr}(G_t)\leq min(n-N,N)\leq n/2$&lt;/p&gt;
+&lt;p&gt;所以综上因为$N &lt; n$，我们可知$\text{sr}(G_t)\leq min(n-N,N)\leq n/2$&lt;/p&gt;
 &lt;p&gt;终于，大功告成，我们由此可知作为梯度$G_t$的rank的近似stable-rank是不高于n/2的，有着显著的low rank特性。&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Thermodynamic Bounds on Symmetry Breaking in Linear and Catalytic Biochemical Systems</title>
-        <link>https://pyfile.github.io/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/</link>
+        <link>http://localhost:1313/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/</link>
         <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://pyfile.github.io/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/</guid>
+        <guid>http://localhost:1313/p/thermodynamic-bounds-on-symmetry-breaking-in-linear-and-catalytic-biochemical-systems/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://link.aps.org/doi/10.1103/PhysRevLett.132.228402&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;原文地址&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;1-论文简介&#34;&gt;1. 论文简介
@@ -224,15 +242,17 @@ $$
 &lt;h2 id=&#34;2-理论基础&#34;&gt;2. 理论基础
 &lt;/h2&gt;&lt;h3 id=&#34;21-非平衡稳态&#34;&gt;2.1 非平衡稳态
 &lt;/h3&gt;&lt;p&gt;从可逆的化学反应过程考虑
-$$\sum_m\nu_mX_m+X_i\overset{k_{ji}}{\underset{k_{ij}}{\rightleftharpoons}}X_j+\sum_m\nu_mX_m$$
+&lt;/p&gt;
+$$\sum_m\nu_mX_m+X_i\overset{k_{ji}}{\underset{k_{ij}}{\rightleftharpoons}}X_j+\sum_m\nu_mX_m$$&lt;p&gt;
 $\sum_m\nu_mX_m$为反应过程中催化剂机制
 根据化学反应中的&lt;em&gt;Law of mass action&lt;/em&gt;，这个过程可以简化成
-$$X_i\overset{k_{ji}\prod_m[X_i]^{\nu_m}}{\underset{k_{ij}\prod_m[X_i]^{\nu_m}}{\rightleftharpoons}}X_j$$
-我们得到有效转换率$\hat{k}_{ij} \equiv k_{ij}\prod_m[X_m]^{\nu_m}$，$[X_m]$表示化学成分$X_m$的浓度，归一化$p_m=[X_m]/\sum_m[X_m]$后，我们可以得到以下方程&lt;/p&gt;
-&lt;p&gt;$$\frac{dp_i}{dt}=\sum_{j(\neq i)}\hat{k}_{ij}p_j-\hat{k}_{ji}p_i$$&lt;/p&gt;
-&lt;p&gt;同时每两组相邻的物质转换满足局域细致平衡
-$$\frac{\hat{k}_{ij}}{\hat{k}_{ji}}=\frac{k_{ij}}{k_{ji}}=e^{\beta(F_{ij}-\Delta E_{ij})}$$
-$F_{ij}$代表从$i$到$j$的非平衡热力学力，在这里，由于催化反应造成的非线性可以用一个系数$\omega$概括，这样写成$\hat{k}_{ij}=\omega_{ij}(p)k_{ij}$和$\hat{k}_{ji}=\omega_{ji}(p)k_{ji}$，为了保证细致平衡，$\omega_{ji}(p)=\omega_{ij}(p)$&lt;/p&gt;
+&lt;/p&gt;
+$$X_i\overset{k_{ji}\prod_m[X_i]^{\nu_m}}{\underset{k_{ij}\prod_m[X_i]^{\nu_m}}{\rightleftharpoons}}X_j$$&lt;p&gt;
+我们得到有效转换率$\hat{k}\_{ij} \equiv k_{ij}\prod_m[X\_m]^{\nu_m}$，$[X\_m]$表示化学成分$X\_m$的浓度，归一化$p\_m=[X\_m]/\sum\_m[X\_m]$后，我们可以得到以下方程&lt;/p&gt;
+$$\frac{dp_i}{dt}=\sum_{j(\neq i)}\hat{k}_{ij}p_j-\hat{k}\_{ji}p_i$$&lt;p&gt;同时每两组相邻的物质转换满足局域细致平衡
+&lt;/p&gt;
+$$\frac{\hat{k}\_{ij}}{\hat{k}\_{ji}}=\frac{k_{ij}}{k_{ji}}=e^{\beta(F_{ij}-\Delta E_{ij})}$$&lt;p&gt;
+$F_{ij}$代表从$i$到$j$的非平衡热力学力，在这里，由于催化反应造成的非线性可以用一个系数$\omega$概括，这样写成$\hat{k}\_{ij}=\omega\_{ij}(p)k_{ij}$和$\hat{k}\_{ji}=\omega_{ji}(p)k_{ji}$，为了保证细致平衡，$\omega_{ji}(p)=\omega_{ij}(p)$&lt;/p&gt;
 &lt;h3 id=&#34;22-生成树&#34;&gt;2.2. 生成树
 &lt;/h3&gt;&lt;p&gt;鉴于我们所使用的环境背景，这里只讨论无向图。在无向图中，若任意两个顶点之间都能够连通，则称此无向图为连通图。生成树为无向连通图中极小的连通子图，生成树包含连通图中所有的顶点并且任意两个之间有且仅有一条通路。生成树的边数为顶点数-1，可以简单的说生成树是无环的连通子图。下图就是一个例子：a为原连通图，b是其对应的生成树。
 &lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.1.png&#34;
@@ -249,17 +269,18 @@ $F_{ij}$代表从$i$到$j$的非平衡热力学力，在这里，由于催化反
 &lt;/h3&gt;&lt;p&gt;让我感到奇怪的是，搜索资料的时候发现图论中的矩阵树理论指的是生成树的数量与拉普拉斯阵的关系&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;(the Matrix-Tree Theorem) Let G be a finite connected graph without loops, with laplacian matrix $L = L(G)$. Let $L_0$ denote $L$ with the last row and column removed (or with the ith row and column removed for any i). Then&lt;/em&gt;
-$$det(L_0) = \kappa(G)$$&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/p&gt;
+$$det(L_0) = \kappa(G)$$&lt;/blockquote&gt;
 &lt;p&gt;后面我也没有看出这个”矩阵树理论“与论文中所用有何关系。
 不过论文给出的另一个参考文献有另外的描述&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;Kirchhoff&amp;rsquo;s theorem now states that the steady state solution $\overline{p}_i$ is given by&lt;/em&gt;
-$$\overline{p}_i=\frac{S_i}{S},$$
+&lt;/p&gt;
+$$\overline{p}\_i=\frac{S_i}{S},$$&lt;p&gt;
 &lt;em&gt;where&lt;/em&gt;
-$$S_i=\sum^M_{\mu=1}A(T_i^{\mu}(G)),S=\sum^N_iS_i$$
-&lt;em&gt;To every $T_i^{\mu}(G)$ we assign an algebraic value $A(T_i^{\mu}(G))$ by multiplying all transition probabilities $\langle i|j\rangle$ whose edges occur in $T_i^{\mu}(G)$ in the direction to i from j.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/p&gt;
+$$S_i=\sum^M_{\mu=1}A(T_i^{\mu}(G)),S=\sum^N_iS_i$$&lt;p&gt;
+&lt;em&gt;To every $T_i^{\mu}(G)$ we assign an algebraic value $A(T_i^{\mu}(G))$ by multiplying all transition probabilities $\langle i|j\rangle$ whose edges occur in $T_i^{\mu}(G)$ in the direction to i from j.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.2.png&#34;
 	
 	
@@ -269,51 +290,57 @@ $$S_i=\sum^M_{\mu=1}A(T_i^{\mu}(G)),S=\sum^N_iS_i$$
 		alt=&#34;矩阵树理论&#34;
 	
 	
-&gt;
-用上面这张图来解释非平衡稳态的矩阵树理论，图(a)举了一个例子，假设一个非平衡过程各态/各物质转变关系如图(a)左侧一样。那么我们可以从图论的视角看这个问题，将这个多节点过程对应的无向图分解为它所对应的生成树（即右侧的$T_1$, $T_2$, $T_3$）。
+&gt;&lt;/p&gt;
+&lt;p&gt;用上面这张图来解释非平衡稳态的矩阵树理论，图(a)举了一个例子，假设一个非平衡过程各态/各物质转变关系如图(a)左侧一样。那么我们可以从图论的视角看这个问题，将这个多节点过程对应的无向图分解为它所对应的生成树（即右侧的$T_1$, $T_2$, $T_3$）。
 当稳态情形满足$\omega_{ij}(p^{ss})\neq0,\forall i,j$（即每个过程均可逆），我们就可以借助上述生成树分解的视角（如图b）得到
-$$p_k^{ss}=\frac{\sum_{\mu}A_k(T_\mu;p^{ss})}{\sum_k\sum_\mu A_k(T_\mu;p^{ss})}$$
+&lt;/p&gt;
+$$p_k^{ss}=\frac{\sum_{\mu}A_k(T_\mu;p^{ss})}{\sum_k\sum_\mu A_k(T_\mu;p^{ss})}$$&lt;p&gt;
 其中$A_k(T_\mu;p^{ss})$表示在稳态$p^{ss}$情况下第$\mu$个生成树对第$k$个节点的贡献，其计算可以通过图c来理解.
-图c展示如何计算$A_1(T_3;p^{ss})$。我们先得到生成树$T_3$。然后因为生成树满足任意两点有且仅有一条通路，那么每条边可以给定唯一的方向，使得整条通路从其余顶点指向目标态1。最后$A_1(T_3;p^{ss})$为“有向化”后的生成树的边对应的等效速率的连乘$\hat{k}_{13}\hat{k}_{32}\hat{k}_{34}$，又由2.1中所说$\hat{k}_{ij}=\omega_{ij}(p)k_{ij}$可解耦为热力学部分$k$和非线性动力学部分$\omega(p)$，则$A_1(T_3;p^{ss})=\hat{k}_{13}\hat{k}_{32}\hat{k}_{34}=\omega_{13}\omega_{32}\omega_{34}k_{13}k_{32}k_{34}=\Omega(T_3;p^{ss})\hat{A}_1(T_3)$
+图c展示如何计算$A_1(T_3;p^{ss})$。我们先得到生成树$T_3$。然后因为生成树满足任意两点有且仅有一条通路，那么每条边可以给定唯一的方向，使得整条通路从其余顶点指向目标态1。最后$A_1(T_3;p^{ss})$为“有向化”后的生成树的边对应的等效速率的连乘$\hat{k}\_{13}\hat{k}\_{32}\hat{k}\_{34}$，又由2.1中所说$\hat{k}\_{ij}=\omega\_{ij}(p)k_{ij}$可解耦为热力学部分$k$和非线性动力学部分$\omega(p)$，则$A_1(T_3;p^{ss})=\hat{k}\_{13}\hat{k}\_{32}\hat{k}\_{34}=\omega\_{13}\omega\_{32}\omega\_{34}k_{13}k_{32}k_{34}=\Omega(T_3;p^{ss})\hat{A}\_1(T_3)$
 图d展示了我们从矩阵树理论能得到的一个有意思的推论：对某个生成树，$A_i(T_\mu)/A_j(T_\mu)$只与$i$，$j$之间的反应路径有关，并且不包含非线性部分。以图d为例
+&lt;/p&gt;
 $$
-\frac{A_1(T_3)}{A_4(T_3)}=\frac{\hat{k}_{13}\hat{k}_{34}\hat{k}_{32}}{\hat{k}_{31}\hat{k}_{43}\hat{k}_{32}}=\frac{k_{13}k_{34}k_{32}\omega_{13}\omega_{34}\omega_{32}}{k_{31}k_{43}k_{32}\omega_{31}\omega_{43}\omega_{32}}=\frac{k_{13}k_{34}}{k_{31}k_{43}}=K^{eq}_{14}(T_3)
-$$&lt;/p&gt;
-&lt;h2 id=&#34;3-结果结论&#34;&gt;3. 结果结论
+\frac{A_1(T_3)}{A_4(T_3)}=\frac{\hat{k}\_{13}\hat{k}\_{34}\hat{k}\_{32}}{\hat{k}\_{31}\hat{k}\_{43}\hat{k}\_{32}}=\frac{k_{13}k_{34}k_{32}\omega_{13}\omega_{34}\omega_{32}}{k_{31}k_{43}k_{32}\omega_{31}\omega_{43}\omega_{32}}=\frac{k_{13}k_{34}}{k_{31}k_{43}}=K^{eq}_{14}(T_3)
+$$&lt;h2 id=&#34;3-结果结论&#34;&gt;3. 结果结论
 &lt;/h2&gt;&lt;h3 id=&#34;31-非平衡对称破缺的上下限&#34;&gt;3.1 非平衡对称破缺的上下限
 &lt;/h3&gt;&lt;p&gt;lemma1
+&lt;/p&gt;
 $$
 \begin{matrix}
-\frac{\sum_i a_i}{\sum_i b_i}\in\left[min\left(\frac{a_i}{b_i}\right), max\left(\frac{a_i}{b_i}\right)\right] &amp;amp; a_i,b_i &amp;gt; 0
+\frac{\sum_i a_i}{\sum_i b_i}\in\left[min\left(\frac{a_i}{b_i}\right), max\left(\frac{a_i}{b_i}\right)\right] &amp; a_i,b_i &gt; 0
 \end{matrix}
-$$
+$$&lt;p&gt;
 证明：
+&lt;/p&gt;
 $$
 \begin{aligned}
-\frac{a_i}{b_i}&amp;amp;\leq max(\frac{a_i}{b_i}) \\
-a_i&amp;amp;\leq max(\frac{a_i}{b_i})b_i \\
-\sum_i a_i&amp;amp;\leq\sum_imax(\frac{a_i}{b_i})b_i \\
-\sum_i a_i&amp;amp;\leq max(\frac{a_i}{b_i})\sum_ib_i \\
-\frac{\sum_i a_i}{\sum_i b_i}&amp;amp;\leq max(\frac{a_i}{b_i})\\
-\text{同理 }min&amp;amp;(\frac{a_i}{b_i})\leq\frac{\sum_i a_i}{\sum_i b_i}
+\frac{a_i}{b_i}&amp;\leq max(\frac{a_i}{b_i}) \\\\
+a_i&amp;\leq max(\frac{a_i}{b_i})b_i \\\\
+\sum_i a_i&amp;\leq\sum_imax(\frac{a_i}{b_i})b_i \\\\
+\sum_i a_i&amp;\leq max(\frac{a_i}{b_i})\sum_ib_i \\\\
+\frac{\sum_i a_i}{\sum_i b_i}&amp;\leq max(\frac{a_i}{b_i})\\\\
+\text{同理 }min&amp;(\frac{a_i}{b_i})\leq\frac{\sum_i a_i}{\sum_i b_i}
 \end{aligned}
-$$
+$$&lt;p&gt;
 我们来计算任意两态的比值(由2.3中结论)
+&lt;/p&gt;
 $$
-\frac{p^{ss}_i}{p^{ss}_j}=\frac{\sum_\mu A_i(T_\mu ;p^{ss})}{\sum_\mu A_j(T_\mu ;p^{ss})}
-$$
+\frac{p^{ss}\_i}{p^{ss}\_j}=\frac{\sum_\mu A_i(T_\mu ;p^{ss})}{\sum_\mu A_j(T_\mu ;p^{ss})}
+$$&lt;p&gt;
 带入之前结果
+&lt;/p&gt;
 $$
-min(\frac{A_i(T_\mu ;p^{ss})}{A_j(T_\mu ;p^{ss})})\leq\frac{p^{ss}_i}{p^{ss}_j}\leq max(\frac{A_i(T_\mu ;p^{ss})}{A_j(T_\mu ;p^{ss})})
-$$
+min(\frac{A_i(T_\mu ;p^{ss})}{A_j(T_\mu ;p^{ss})})\leq\frac{p^{ss}\_i}{p^{ss}\_j}\leq max(\frac{A_i(T_\mu ;p^{ss})}{A_j(T_\mu ;p^{ss})})
+$$&lt;p&gt;
 由2.3中的推论，我们知道$A_i/A_j$只与$i,j$之间的反应路径有关，即只与生成树的选择有关，所以
+&lt;/p&gt;
 $$
-\frac{p^{ss}_i}{p^{ss}_j}\leq max(\frac{A_i(T_\mu ;p^{ss})}{A_j(T_\mu ;p^{ss})})=\frac{A_i(T_{max} ;p^{ss})}{A_j(T_{max} ;p^{ss})}=\prod\frac{k_{mn}}{k_{nm}}=\prod e^{\beta(F_{mn}-\Delta E_{mn})}=K^{eq}_{ij}(T_{max})
-$$
+\frac{p^{ss}\_i}{p^{ss}\_j}\leq max(\frac{A_i(T_\mu ;p^{ss})}{A_j(T_\mu ;p^{ss})})=\frac{A_i(T_{max} ;p^{ss})}{A_j(T_{max} ;p^{ss})}=\prod\frac{k_{mn}}{k_{nm}}=\prod e^{\beta(F_{mn}-\Delta E_{mn})}=K^{eq}\_{ij}(T_{max})
+$$&lt;p&gt;
 对$p^{ss}_i/p^{ss}_j$的下界同理。至此，我们便看到两个稳态概率比值的上下限与非线性项和非平衡动力学无关。&lt;/p&gt;
 &lt;h3 id=&#34;32-动力学校准kinetic-proofreading&#34;&gt;3.2 动力学校准(kinetic proofreading)
-&lt;/h3&gt;&lt;p&gt;动力学校准指的是在一些生命过程中，准确性会受到热平衡的限制，因此有人认为会存在利于动力学分辨的耗能的中间步骤。这里作者借助了一个酶(E)与正确的底物(EW)或错误的底物(ER)结合的模型，这个模型中，每种结合态都有对应加*的激活态，如下图：
-&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.4.png#pic_center&#34;
+&lt;/h3&gt;&lt;p&gt;动力学校准指的是在一些生命过程中，准确性会受到热平衡的限制，因此有人认为会存在利于动力学分辨的耗能的中间步骤。这里作者借助了一个酶(E)与正确的底物(EW)或错误的底物(ER)结合的模型，这个模型中，每种结合态都有对应加*的激活态，如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.4.png#pic_center&#34;
 	
 	
 	
@@ -324,8 +351,8 @@ $$
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;整个过程不仅包含平衡态的平衡能量差，还包括驱动整个过程远离平衡态的化学势$\Delta\mu$&lt;/p&gt;
-&lt;p&gt;结合3.1中的利用矩阵树理论得到的非平衡稳态概率比值上下限，得到对应这个动力学过程的错误率$p_{EW^*}/p_{ER^*}$范围
-&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.5.png#pic_center&#34;
+&lt;p&gt;结合3.1中的利用矩阵树理论得到的非平衡稳态概率比值上下限，得到对应这个动力学过程的错误率$p_{EW^*}/p_{ER^*}$范围&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/pyfile/blogsrc/main/figure-2.5.png#pic_center&#34;
 	
 	
 	

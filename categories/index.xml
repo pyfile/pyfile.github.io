@@ -1,35 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on KiKi&#39;s Blog</title>
-        <link>http://localhost:1313/categories/</link>
+        <link>https://pyfile.github.io/categories/</link>
         <description>Recent content in Categories on KiKi&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
-        <lastBuildDate>Tue, 13 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Paper Reading</title>
-        <link>http://localhost:1313/categories/paper-reading/</link>
-        <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/categories/paper-reading/</guid>
-        <description>&lt;img src="http://localhost:1313/categories/paper-reading/v2-3bc30d2685bcaa331904a71a678e8a11_1440w.jpg" alt="Featured image of post Paper Reading" /&gt;</description>
-        </item>
-        <item>
-        <title>Application</title>
-        <link>http://localhost:1313/categories/application/</link>
-        <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/categories/application/</guid>
-        <description>&lt;img src="http://localhost:1313/categories/application/applying-online.jpg" alt="Featured image of post Application" /&gt;</description>
-        </item>
-        <item>
-        <title>Test</title>
-        <link>http://localhost:1313/categories/test/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/categories/test/</guid>
-        <description>&lt;img src="http://localhost:1313/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
-        </item>
-        
-    </channel>
+        <language>zh-CN</language>
+        <lastBuildDate>Tue, 03 Nov 2026 04:26:08 +0800</lastBuildDate><atom:link href="https://pyfile.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>Misc</title>
+            <link>https://pyfile.github.io/categories/misc/</link>
+            <pubDate>Tue, 03 Nov 2026 04:26:08 +0800</pubDate>
+            <guid>https://pyfile.github.io/categories/misc/</guid>
+            <description>&lt;img src=&#34;https://pyfile.github.io/categories/misc/cover.jpg&#34; alt=&#34;Featured image of post Misc&#34; /&gt;</description>
+        </item><item>
+            <title>Paper Reading</title>
+            <link>https://pyfile.github.io/categories/paper-reading/</link>
+            <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
+            <guid>https://pyfile.github.io/categories/paper-reading/</guid>
+            <description>&lt;img src=&#34;https://pyfile.github.io/categories/paper-reading/v2-3bc30d2685bcaa331904a71a678e8a11_1440w.jpg&#34; alt=&#34;Featured image of post Paper Reading&#34; /&gt;</description>
+        </item><item>
+            <title>Application</title>
+            <link>https://pyfile.github.io/categories/application/</link>
+            <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
+            <guid>https://pyfile.github.io/categories/application/</guid>
+            <description>&lt;img src=&#34;https://pyfile.github.io/categories/application/applying-online.jpg&#34; alt=&#34;Featured image of post Application&#34; /&gt;</description>
+        </item><item>
+            <title>Book Reading</title>
+            <link>https://pyfile.github.io/categories/book-reading/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>https://pyfile.github.io/categories/book-reading/</guid>
+            <description>&lt;img src=&#34;https://pyfile.github.io/categories/book-reading/cover.jpg&#34; alt=&#34;Featured image of post Book Reading&#34; /&gt;</description>
+        </item><item>
+            <title>Essays</title>
+            <link>https://pyfile.github.io/categories/essays/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>https://pyfile.github.io/categories/essays/</guid>
+            <description>&lt;img src=&#34;https://pyfile.github.io/categories/essays/cover.jpg&#34; alt=&#34;Featured image of post Essays&#34; /&gt;</description>
+        </item><item>
+            <title>Test</title>
+            <link>https://pyfile.github.io/categories/test/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>https://pyfile.github.io/categories/test/</guid>
+            <description>&lt;img src=&#34;https://pyfile.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg&#34; alt=&#34;Featured image of post Test&#34; /&gt;</description>
+        </item></channel>
 </rss>

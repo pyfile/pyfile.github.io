@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Misc on KiKi&#39;s Blog</title>
+        <link>https://pyfile.github.io/categories/misc/</link>
+        <description>Recent content in Misc on KiKi&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-CN</language>
+        <lastBuildDate>Tue, 03 Nov 2026 04:26:08 +0800</lastBuildDate><atom:link href="https://pyfile.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>关于AI tag的说明</title>
+            <link>https://pyfile.github.io/p/about_ai_tag/</link>
+            <pubDate>Tue, 03 Nov 2026 04:26:08 +0800</pubDate>
+            <guid>https://pyfile.github.io/p/about_ai_tag/</guid>
+            <description>&lt;p&gt;在后续所有文章的tag中，我会增加一个用来说明文章写作过程中AI使用程度的tag，它有四种：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;AI Only: 文章构思，写作，输出实现几乎全部由AI自动完成&lt;/li&gt;&#xA;&lt;li&gt;Human Assist: 文章构思，写作，输出实现大部分由AI实现，不过作者我自己会进行核对校验和少数修改&lt;/li&gt;&#xA;&lt;li&gt;AI Assist: 文章构思，写作，输出实现大部分由作者我自己实现，不过会使用一些AI工具来辅助，包括文章润色，构思AI参考，AI辅助收集资料&lt;/li&gt;&#xA;&lt;li&gt;Human Only: 全部流程几乎全部由作者我自己人工实现&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;</description>
+        </item></channel>
+</rss>
